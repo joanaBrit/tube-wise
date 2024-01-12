@@ -62,12 +62,16 @@
 
 ### Day 1 - Project Planning and Initialization:
 
+- Have git repo
 - Create the App install React and typescript
-- Set up the app creating a root
+- Set up the app creating a root and test it
+
 
 ### Day 2-4 - Backend Development
 
-
+- Install node.js
+- Since I am building with typescript it was required a webpack to bundle, added a loader and added some scripts to the package.json like start and build.
+- Tested with if the route was making a good connection and the insonia was able to get requests.
 
 ### Day 5 - 12  Frontend Development
 
