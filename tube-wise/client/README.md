@@ -62,7 +62,7 @@
 
 ### Day 1 - Project Planning and Initialization:
 
-- Have git repo
+- create a repository in GitHub
 - Create the App install React and typescript
 - Set up the app creating a root and test it
 
