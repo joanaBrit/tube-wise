@@ -1,15 +1,23 @@
-import React from 'react'
-import TubeIndex from './components/TubeIndex';
-// import axios from 'axios'
+import { Routes, Route} from 'react-router-dom'
+
+// Page components
+import TubeIndex from './components/TubeIndex'
+import Login from './components/Login'
+import Register from './components/Register'
+
 
 function App() {
 
   return (
-    <div>
-      <header>
-        <TubeIndex />
-      </header>
-    </div>
+    <>
+    <main>
+      <Routes>
+        <Route path='/' element={<TubeIndex />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        </Routes>
+    </main>
+    </>
   )
 }
 

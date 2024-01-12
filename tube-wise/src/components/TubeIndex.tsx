@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-interface apiProps{
+
+interface apiProps {
   name: string
   statusSeverityDescreption: string
   modified: string
@@ -11,7 +12,7 @@ interface apiProps{
 export default function TubeIndex() {
 
   //* State
-  const [ tube, setTube ] = useState<apiProps[]>()
+  const [tube, setTube] = useState<apiProps[]>()
 
   //* Initial Render / fetching the data
   useEffect(() => {
@@ -27,11 +28,14 @@ export default function TubeIndex() {
     getTubeData()
   }, [])
 
-  return(
+  return (
     <>
-    {tube && tube.length > 0 && (
-      <h3>{tube[0].name}</h3>
-    )}
+      {tube && tube.length > 0 ? (
+        <h3>{tube[0].name}</h3>
+
+      ) : (
+        <p>spinner</p>
+      )}
     </>
   )
 }
