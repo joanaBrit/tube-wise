@@ -74,7 +74,8 @@
 - Tested with if the route was making a good connection and the insonia was able to get requests.
 - Connected the data with mongoDB.
 - Created an env file to secure my password. 
-- 
+- Created user Schema, a virtual field for the passwordconfirmation, installed some depencies like bcrypt-ts, to hash the password.
+- Created a custom method for a schema to disable all special characters for use in a password.
 
 ### Day 5 - 12  Frontend Development
 
