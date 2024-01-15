@@ -1,5 +1,4 @@
 import mongoose, { Document, Schema } from 'mongoose'
-// import { hashSync } from "bcrypt-ts"
 import * as bcrypt from "bcrypt-ts"
 
 
@@ -10,6 +9,7 @@ export interface IUser extends Document {
   email: string
   password: string
   _passwordConfirmation?: string
+  validatePassword(plainTextPassword: string): boolean
 }
 
 // Create schema
@@ -26,6 +26,7 @@ const userSchema = new Schema<IUser>({
   }
 
 )
+
 
 //* Virtual Fiels
 // password confirmation
@@ -57,13 +58,17 @@ userSchema
   next()
 })
 
+
 // Custom method to a schema
-userSchema.methods.validatePassword = function (plainTextPassword) {
-  let encodePassword = Buffer.from(plainTextPassword, 'utf-8')
+userSchema.methods.validatePassword = function (plainTextPassword: string): boolean {
   // Convert the Buffer to a string
-  let encodePasswordString = encodePassword.toString('utf-8')
-  return bcrypt.compareSync(encodePasswordString, this.password)
+  let encodePassword = Buffer.from(plainTextPassword, 'utf-8').toString('utf-8')
+  if (!encodePassword && encodePassword.length < 6) {
+    this.invalidate('passwordConfirmation', 'The password must be at least 6 characters length')
+  }
+  return bcrypt.compareSync(encodePassword, this.password)
 }
+
 
 //* Model
 export const userModel = mongoose.model<IUser>('User', userSchema)

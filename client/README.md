@@ -69,13 +69,29 @@
 
 ### Day 2-4 - Backend Development
 
-- Install node.js
+1. Set Up Project:
+- Initialized a new Node.js project `npm init -y`.
 - Since I am building with typescript it was required a webpack to bundle, added a loader and added some scripts to the package.json like start and build.
+- Installed necessary dependencies (express, mongoose, bcrypt, jsonwebtoken, etc.)
 - Tested with if the route was making a good connection and the insonia was able to get requests.
+2. Create Database Schema:
 - Connected the data with mongoDB.
 - Created an env file to secure my password. 
-- Created user Schema, a virtual field for the passwordconfirmation, installed some depencies like bcrypt-ts, to hash the password.
+- Created an user Schema, include fields for username, email, password. virtual field for the passwordconfirmation.
 - Created a custom method for a schema to disable all special characters for use in a password.
+3. User Registration:
+- Create an endpoint to handle user registration (`/register`).
+- Hash the user's password using `bcrypt` before storing it in the database.
+- Created the conection by the routes.
+4. User Login:
+
+5. Token Generation (JWT):
+
+6. Authentication Middleware:
+
+7. Protected Routes:
+
+8. User Logout:
 
 ### Day 5 - 12  Frontend Development
 

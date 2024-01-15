@@ -1,7 +1,9 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import router from './config/routes'
 
 import dotenv from 'dotenv'
+
 dotenv.config()
 
 const app = express()
@@ -9,10 +11,8 @@ const app = express()
 //* Parse JSON body
 app.use(express.json())
 
-// app.post('/api', handleApiRoute)
-
 //* Specific routes
-// app.use(router)
+app.use(router)
 
 //* Route not found
 app.use((req, res) => { return res.status(404).json({ message: 'Not found' }) })
@@ -28,14 +28,3 @@ const startServer = async () => {
   }
 }
 startServer()
-
-// function handleApiRoute(req, res) {
-//   console.log(req.body)
-//   const { user, pass } = req.body
-//   if (user === 'joana') {
-//     return res.send('Ok')
-//   } else {
-//     return res.send('No')
-//   }
-
-// }
