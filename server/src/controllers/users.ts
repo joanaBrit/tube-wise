@@ -18,3 +18,25 @@ export const registerUser = async (req: Request, res: Response) => {
 
 
 //* Login route
+
+export const loginUser =async (req: Request, res: Response) => {
+  const { username, email, password } = req.body
+
+  try {
+    // search the database for the user
+    const userToLogin = await userModel.findOne({ email: email, username: username})
+
+    // if the email and the username doesn't match any users
+    if(!userToLogin) throw new Error('User not found')
+    
+    // if they don't match we need to check the hash password and throw an error
+    if (!userToLogin.validatePassword(password)) {
+      throw new Error('Password invalid')
+    }
+
+    //  if they match
+
+  } catch (error) {
+    return res.status(401).json({ error: 'Unauthorized'})
+  }
+}
