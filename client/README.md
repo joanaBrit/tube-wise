@@ -83,6 +83,7 @@
 - Create an endpoint to handle user registration (`/register`).
 - Hash the user's password using `bcrypt` before storing it in the database.
 - Created the conection by the routes.
+- Handle user errors.
 4. User Login:
 
 5. Token Generation (JWT):
@@ -137,7 +138,9 @@
 
 ### Challenges
 
-1. 
+1. In the register route in controllers for name dupliucates i wanted to throw an error that can say the user email or username already exixts.
+The problem is even if I changed the user email to be different and username to be equal the error message would be always the email is the same.
+How did I fix the error?
 
 
 ### Key Learnings
