@@ -141,7 +141,31 @@
 1. In the register route in controllers for name dupliucates i wanted to throw an error that can say the user email or username already exixts.
 The problem is even if I changed the user email to be different and username to be equal the error message would be always the email is the same.
 How did I fix the error?
+```typescript
+ // If the user already exists
+    const existingUser = await userModel.findOne({
+      $or: [
+        { email: req.body.email },
+        { username: req.body.username }
+      ]
+    })
 
+    const userInput: IUser = req.body
+
+    if (existingUser) {
+      // variable to store the duplicated
+      let duplicatedField: string
+      // compare the user input with the existing User
+      if (userInput.email === existingUser.email) {
+        duplicatedField = "email"
+      } else {
+        duplicatedField = 'username'
+      }
+
+      if (duplicatedField)
+        throw new Error(`User with the same ${duplicatedField} already exists.`)
+    }
+```
 
 ### Key Learnings
 
