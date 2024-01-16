@@ -35,7 +35,9 @@ export const loginUser =async (req: Request, res: Response) => {
     }
 
     //  if they match
-
+    const token = jwt.sign({ sub: userToLogin._id }, process.env.SECRET, { expires: '7d'})
+    res.json({ message: `Welcome back, ${userToLogin.username}!`, token: token })
+    
   } catch (error) {
     return res.status(401).json({ error: 'Unauthorized'})
   }
