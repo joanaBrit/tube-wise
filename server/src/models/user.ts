@@ -63,7 +63,7 @@ userSchema
 userSchema.methods.validatePassword = function (plainTextPassword: string): boolean {
   // Convert the Buffer to a string
   let encodePassword = Buffer.from(plainTextPassword, 'utf-8').toString('utf-8')
-  if (!encodePassword && encodePassword.length < 6) {
+  if (!encodePassword && encodePassword.length > 6) {
     this.invalidate('passwordConfirmation', 'The password must be at least 6 characters length')
   }
   return bcrypt.compareSync(encodePassword, this.password)
