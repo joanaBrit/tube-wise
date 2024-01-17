@@ -83,7 +83,6 @@
 - Create an endpoint to handle user registration (`/register`).
 - Hash the user's password using `bcrypt` before storing it in the database.
 - Created the conection by the routes.
- 
 4. User Login:
 - Create an endpoint to handle user registration (`/login`).
 -Hash the user's password using `bcrypt` before storing in the database.
@@ -94,9 +93,11 @@
 - Created a middleware to verify the JWT sent in the headers of protected routes.
 - Ensured the token is valid before allowing access to protected resources.
 7. Protected Routes:
-
-8. User Logout:
-
+- Created a secure route to authenticate if the user have is authenticate.
+Error handlers
+- Custom class
+- Middleware authentication to protectted routes.
+- Refactored and cleaned some lines of code.
 ### Day 5 - 12  Frontend Development
 
 
