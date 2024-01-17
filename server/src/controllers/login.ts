@@ -1,5 +1,7 @@
 import { Request, Response } from 'express'
 import { userModel, IUser } from '../models/user'
+import { UnprocessableEntity, NotFound, BadRequest } from '../utils/errors'
+import { errorHandler } from '../utils/errorMiddleware'
 import jwt from 'jsonwebtoken'
 
 
@@ -15,7 +17,7 @@ export const loginUser = async (req: Request, res: Response) => {
       // Log details
       console.log('req.body.email: ', email)
       console.log('req.body.username: ', username)
-      throw new Error('Please provide either an email or an username.')
+      throw new BadRequest('Please provide either an email or an username.')
     }
 
     // search the database for the user
@@ -27,12 +29,11 @@ export const loginUser = async (req: Request, res: Response) => {
     })
 
     // if the email and the username doesn't match any users
-    if (!userToLogin) throw new Error('User not found')
-
+    if (!userToLogin) throw new NotFound('User not found')
 
     // if they don't match we need to check the hash password and throw an error
     if (!userToLogin.validatePassword(password)) {
-      throw new Error('Password invalid')
+      throw new UnprocessableEntity('Password invalid')
     }
 
     //  if they match
@@ -43,13 +44,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
   } catch (error) {
     console.log(error)
-    // User error messages
-    if (error.message === 'Password invalid') {
-      return res.status(401).json({ error: 'Invalid Password. Please check your password.' })
-    } else if (error.message === 'User not found') {
-      return res.status(404).json({ error: 'User not found.' })
-    } else {
-      return res.status(401).json({ error: 'Unauthorized' })
-    }
+    // Error messages
+    errorHandler(error, res)
   }
 }

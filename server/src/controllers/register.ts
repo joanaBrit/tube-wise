@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { userModel, IUser } from '../models/user'
-
-
+import { BadRequest, UnprocessableEntity, Conflict } from '../utils/errors'
+import { errorHandler } from '../utils/errorMiddleware'
 
 //* Register route
 
@@ -12,16 +12,17 @@ export const registerUser = async (req: Request, res: Response) => {
 
     for (const field of requiredFields) {
       if (!req.body[field]) {
-        throw new Error(`Missing required field: ${field}`)
+        // throw new Error(`Missing required field: ${field}`)
+        throw new BadRequest(`Missing required field: ${field}`)
       }
     }
 
     if (req.body.password.length < 6) {
-      throw new Error('The password must be at least 6 characters long.')
+      throw new UnprocessableEntity('The password must be at least 6 characters long.')
     }
 
     if (req.body.password !== req.body.passwordConfirmation) {
-      throw new Error('Passwords don\'t match.')
+      throw new UnprocessableEntity('Passwords don\'t match.')
     }
 
     // If the user already exists
@@ -45,7 +46,7 @@ export const registerUser = async (req: Request, res: Response) => {
       }
 
       if (duplicatedField)
-        throw new Error(`User with the same ${duplicatedField} already exists.`)
+        throw new Conflict(`User with the same ${duplicatedField} already exists.`)
     }
 
     // Create the user if all required fields are presented.
@@ -56,6 +57,8 @@ export const registerUser = async (req: Request, res: Response) => {
 
   } catch (error) {
     console.error(error)
-    res.status(422).json({ error: error.message || 'Unprocessable Entity' })
+    // Error messages
+    errorHandler(error, res)
+    // res.status(422).json({ error: error.message || 'Unprocessable Entity' })
   }
 }

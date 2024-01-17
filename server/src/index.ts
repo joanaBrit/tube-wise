@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import router from './config/routes'
 
 import dotenv from 'dotenv'
+import { errorHandler } from './utils/errorMiddleware'
 
 dotenv.config()
 
@@ -14,8 +15,11 @@ app.use(express.json())
 //* Specific routes
 app.use(router)
 
+//* Middleware error handler
+app.use((req, res) => { errorHandler(null, res) })
+
 //* Route not found
-app.use((req, res) => { return res.status(404).json({ message: 'Not found' }) })
+// app.use((req, res) => { return res.status(404).json({ message: 'Not found' }) })
 
 const startServer = async () => {
   try {
