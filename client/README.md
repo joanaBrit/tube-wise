@@ -101,8 +101,8 @@ Error handlers
 ### Day 5 - 12  Frontend Development
 1. Set Up Project:
 - Create a new React app, installed typescript and nessecery dependancies.
-2. User Interface:
-- Design and implement user interfaces for registration, login, and other user-related actions.
+<!-- 2. User Interface:
+- Designed buttons and  and implement user interfaces for registration, login, and other user-related actions. -->
 3. API Requests:
 - Use the fetch API or libraries like axios to make requests to your Node.js backend.
 4. User Registration/Login Forms:
