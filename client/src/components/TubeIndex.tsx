@@ -34,7 +34,7 @@ export default function TubeIndex() {
         <h3>{tube[0].name}</h3>
 
       ) : (
-        <p>spinner</p>
+        <div>spinner</div>
       )}
     </>
   )
