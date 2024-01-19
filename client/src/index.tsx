@@ -5,7 +5,9 @@ import App from './App'
 // import the styles
 
 
-const root = createRoot(document.getElementById('root')!) // tell TS that you're sure the root won't be null using !
+const root = createRoot(document.getElementById('root')!
+) // tell TS that you're sure the root won't be null using - !
+
 root.render(
   <BrowserRouter>
     <App />

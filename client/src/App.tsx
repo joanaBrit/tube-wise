@@ -1,22 +1,22 @@
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 // Page components
-import TubeIndex from './components/TubeIndex'
+import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
+import TubeIndex from './components/TubeIndex'
 
 
 function App() {
 
   return (
     <>
-    <main>
       <Routes>
-        <Route path='/' element={<TubeIndex />} />
+        <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        </Routes>
-    </main>
+        <Route path='/tube' element={<TubeIndex />} />
+      </Routes>
     </>
   )
 }
