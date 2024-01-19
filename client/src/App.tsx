@@ -5,6 +5,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import Register from './components/Register'
 import TubeIndex from './components/TubeIndex'
+import Form from './components/Form'
 
 
 function App() {
@@ -15,6 +16,11 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/form' element={
+          <Form
+            fields={['username', 'email', 'password']}
+            onLoad={async () => ({ data: {} })}
+          />} />
         <Route path='/tube' element={<TubeIndex />} />
       </Routes>
     </>
