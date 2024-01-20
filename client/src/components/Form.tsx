@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { setToken } from 'typescript'
+import { setToken } from '../utils/Auth'
 
 // Utils
 
@@ -48,17 +48,17 @@ const Form: React.FC<FormProps> = ({ fields,  onLoad }) => {
     setErrors('')
   }
 
-  // const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   e.preventDefault()
-  //   try {
-  //     const { data } = await request(formData)
-  //     if (data.token) {
-  //       setToken(data.token)
-  //     }
-  //   } catch (error) {
-  //     setErrors(errorMessage)
-  //   }
-  // }
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    // try {
+    //   const { data } = await request(formData)
+    //   if (data.token) {
+    //     setToken(data.token)
+    //   }
+    // } catch (error) {
+    //   setErrors(errorMessage)
+    // }
+  }
 
   return (
     <form onSubmit={() => { }}>
