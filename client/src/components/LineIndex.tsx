@@ -9,7 +9,7 @@ interface apiProps {
 }
 
 
-export default function TubeIndex() {
+const TubeIndex = () => {
 
   //* State
   const [tube, setTube] = useState<apiProps[]>()
@@ -40,4 +40,4 @@ export default function TubeIndex() {
   )
 }
 
-
+export default TubeIndex

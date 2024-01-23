@@ -16,7 +16,7 @@ export const removeToken = (tokenName: string) => {
 export const tokenisValid = (tokenName: string) => {
   const token = getToken(tokenName)
   console.log(token)
-// if not token return false
+// if (token === null || token === undefined) return false
   if (!token) {
     return false
   }
@@ -27,6 +27,7 @@ export const tokenisValid = (tokenName: string) => {
     console.log(exp, now)
     return exp > now
   } catch (error) {
+    console.log('Error token', token)
     return false
   }
 }

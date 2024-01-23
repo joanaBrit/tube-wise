@@ -7,7 +7,7 @@ interface CustomError {
   // details: string
   status: number
   name: string
-  errors: string
+  error: string
 }
 
 
@@ -60,7 +60,7 @@ export class Unauthorized extends CustomError {
     super(message)
     this.name = 'Unauthorized'
     this.status = 401
-    this.errors = 'Unauthorized'
+    this.error = 'Unauthorized'
   }
 }
 
