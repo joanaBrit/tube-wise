@@ -6,9 +6,21 @@ import Login from './components/Login'
 import Register from './components/Register'
 import TubeIndex from './components/LineIndex'
 import Form from './components/Form'
+import axios from 'axios'
 
 
 function App() {
+
+  const SubmitFormData = async (formData: FormData): Promise<{ data: any }> => {
+    try {
+      // send form data to the server
+      const response = await axios.post('/api/submit', formData)
+      return { data: response.data }
+    } catch (error) {
+      throw error
+    }
+  }
+
 
   return (
     <>
@@ -19,9 +31,9 @@ function App() {
         <Route path='/form' element={
           <Form
             fields={['username', 'email', 'password']}
-            request={FormData}
+            request={SubmitFormData}
             redirect='/success'
-            onLoad={async () => ({ data: {} }) }
+            onLoad={async () => ({ data: {} })}
           />} />
         <Route path='/tube' element={<TubeIndex />} />
       </Routes>
