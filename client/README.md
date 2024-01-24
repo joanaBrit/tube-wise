@@ -132,6 +132,7 @@ export type LoginResponse = {
 - Handle form submissions, validate user input, and display appropriate messages.
 - Create user authentication for the token.
 - Debbuging and refacturing some parts code logic. 
+- Login and register fields.
 
 5. Token Storage:
 - 
