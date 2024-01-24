@@ -22,7 +22,7 @@ const Login = () => {
   }
 
   return (
-    <Form title="Login" request={login} fields={fields.map(v=>v.name)} redirect="/tube"/>
+    <Form title="Login" request={login} fields={fields} redirect="/tube"/>
   )
 }
 

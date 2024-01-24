@@ -28,14 +28,14 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/form' element={
+        {/* <Route path='/form' element={
           <Form
             title=''
             fields={['username', 'email', 'password']}
             request={SubmitFormData}
             redirect='/success'
             onLoad={async () => ({ data: {} })}
-          />} />
+          />} /> */}
         <Route path='/tube' element={<TubeIndex />} />
       </Routes>
     </>

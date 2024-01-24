@@ -32,7 +32,7 @@ const Register = () => {
   }
 
   return (
-    <Form title="Register" request={register} fields={fields.map(v=>v.name)} redirect="/login"/>
+    <Form title="Register" request={register} fields={fields} redirect="/login"/>
   )
 }
 

@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorResponse, LoginResponse } from '../../../common/types'
 import { setToken } from '../utils/Auth'
+import { TextField } from '@mui/material'
 
 
 
 // Interface
 interface FormProps {
   title: string
-  fields: string[]
+  fields: Array<{ type: string, name: string, label: string }>
   request: (data: any) => Promise<{ data: ErrorResponse | LoginResponse }>
   redirect: string
   onLoad?: () => Promise<{ data: any }>
@@ -29,11 +30,12 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   //* On component render
   useEffect(() => {
     const fillFormField = async () => {
+      if (!onLoad) return
       try {
         const { data } = await onLoad()
         setFormData(data)
       } catch (error) {
-        console.error(error)
+        // console.error(error)
         setError(String(error))
       }
     }
@@ -87,13 +89,12 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
     <form onSubmit={handleSubmit}>
       <div>
         {fields.map((field) => (
-          <input
-            key={field}
-            name={field}
-            id={field}
-            type={field}
-            onChange={handleChange}
-          />
+          <TextField
+            key={field.name}
+            label={field.label}
+            name={field.name}
+            type={field.type}
+            onChange={handleChange} />
         ))}
       </div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
