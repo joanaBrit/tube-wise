@@ -106,8 +106,33 @@ Error handlers
 3. API Requests:
 - Use the fetch API or libraries like axios to make requests to your Node.js backend.
 4. User Registration/Login Forms:
-- Created forms for user registration and login.
+- Created a form for user to login.
+- inserted submit form data function to send data to the server.
+- Created handle Change and Submit.
+- Incerted a folder to be able to use the error from the backend errors with the front end.
+
+
+```Typescript
+export type ServerResponse = ErrorResponse | RegisterUserResponse
+
+export type ErrorResponse = {
+  error?: string
+}
+
+export type RegisterUserResponse = {
+  user: string
+}
+
+export type LoginResponse = {
+  token: string,
+  doNotNavigate?: boolean
+}
+```
+
 - Handle form submissions, validate user input, and display appropriate messages.
+- Create user authentication for the token.
+- Debbuging and refacturing some parts code logic. 
+
 5. Token Storage:
 - 
 6. Protected Routes:
@@ -183,9 +208,11 @@ How did I fix the error?
     }
 ```
 
+2. As a first time learninging typescript sometimes it toke me a while where the erros were coming from and why it was happening, trying to not do javascript sometimes, since some parts are similar and typescript would accept then not showing error makes me douple check how was the proper way to write in TypeSxcript.
+
 ### Key Learnings
 
-
+1. Learnind typescript, could be challege at time but then to see what you can get from it is very good.
 
 
 ### Bugs
