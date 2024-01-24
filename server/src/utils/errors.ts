@@ -1,6 +1,3 @@
-import mongoose from 'mongoose'
-
-
 //* Custom classes
 //  ErrorConstructor to throw errors into catch with a message.
 interface CustomError {
