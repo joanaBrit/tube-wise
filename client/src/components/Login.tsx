@@ -8,12 +8,12 @@ const Login = () => {
     {
       type: 'text',
       name: 'Username',
-      label: 'Username or Email'
+      label: 'Username or Email',
     },
     {
       type: 'password',
       name: 'Password',
-      label: 'Password'
+      label: 'Password',
     }
   ]
 
@@ -22,7 +22,7 @@ const Login = () => {
   }
 
   return (
-    <Form title="Login" request={login} fields={fields.map(v=>v.name)} redirect='/tube'/>
+    <Form title="Login" request={login} fields={fields.map(v=>v.name)} redirect="/tube"/>
   )
 }
 
