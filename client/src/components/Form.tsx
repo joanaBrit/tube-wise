@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorResponse, LoginResponse } from '../../../common/types'
-
-// Utils
 import { setToken } from '../utils/Auth'
 
-// Interface form
+
+
+// Interface
 interface FormProps {
-  // title: string
+  title: string
   fields: string[]
   request: (data: any) => Promise<{ data: ErrorResponse | LoginResponse }>
   redirect: string
-  onLoad: () => Promise<{ data: any }>
+  onLoad?: () => Promise<{ data: any }>
 }
 
 
@@ -22,6 +22,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
   const [error, setError] = useState<string>('')
+  const [message, setMessage] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
 
 
@@ -69,6 +70,12 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         }
       }
 
+      // Reset form data after successful submission
+      setFormData({})
+
+      // Set successful message
+      setMessage('Form submitted successfuly!')
+
     } catch (error) {
       const errorMessage = error.response?.data?.message || 'Internal Error'
       setError(errorMessage)
@@ -91,6 +98,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       </div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <button type="submit" disabled={loading}>
+        {message}
         {loading ? 'Submitting...' : 'Submit'}
       </button>
     </form>

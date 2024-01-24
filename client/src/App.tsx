@@ -30,6 +30,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/form' element={
           <Form
+            title=''
             fields={['username', 'email', 'password']}
             request={SubmitFormData}
             redirect='/success'
