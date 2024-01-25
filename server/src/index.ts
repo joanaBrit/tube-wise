@@ -1,13 +1,17 @@
-import express from 'express'
+import express, { NextFunction, Response, Request } from 'express'
 import mongoose from 'mongoose'
 import router from './config/routes'
 import path from 'path'
+import cors from 'cors'
 import dotenv from 'dotenv'
 import { errorHandler } from './utils/errorMiddleware'
 
 dotenv.config()
 
 const app = express()
+
+// Enable CORS
+app.use(cors())
 
 //* Parse JSON body
 app.use(express.json())
@@ -16,7 +20,7 @@ app.use(express.json())
 app.use(router)
 
 //* Middleware error handler
-app.use((req, res) => { errorHandler(null, res) })
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => { errorHandler(err, res) })
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'client', 'build')))

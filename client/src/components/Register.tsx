@@ -1,3 +1,4 @@
+import { API_ROOT } from '../constants'
 import Form from './Form'
 import axios from 'axios'
 
@@ -7,28 +8,28 @@ const Register = () => {
   const fields = [
     {
       type: 'text',
-      name: 'Username',
+      name: 'username',
       label: 'Username',
     },
     {
       type: 'email',
-      name: 'Email',
+      name: 'email',
       label: 'Email',
     },
     {
       type: 'password',
-      name: 'Password',
+      name: 'password',
       label: 'Password',
     },
     {
       type: 'password',
-      name: 'Password Confirmation',
+      name: 'passwordConfirmation',
       label: 'Password Confirmation',
     }
   ]
 
   function register(formData){
-    return axios.post('/register', formData)
+    return axios.post(API_ROOT+'/register', formData)
   }
 
   return (

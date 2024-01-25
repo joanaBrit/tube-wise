@@ -5,12 +5,10 @@ import { loginUser } from '../controllers/login'
 const router = express.Router()
 
 //* Users
-router
-.route('/register')
+router.route('/register')
 .post(registerUser)
 
-router
-.route('/login')
+router.route('/login')
 .post(loginUser)
 
 
