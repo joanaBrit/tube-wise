@@ -133,7 +133,7 @@ export type LoginResponse = {
 - Create user authentication for the token.
 - Debbuging and refacturing some parts code logic. 
 - Login and register fields.
-
+- Installed Material UI and addet to the form.
 5. Token Storage:
 - 
 6. Protected Routes:

@@ -1,7 +1,7 @@
 export type ServerResponse = ErrorResponse | RegisterUserResponse
 
 export type ErrorResponse = {
-  error?: string
+  error: string
 }
 
 export type RegisterUserResponse = {

@@ -1,10 +1,9 @@
 //* Custom classes
 //  ErrorConstructor to throw errors into catch with a message.
 interface CustomError {
-  // details: string
   status: number
   name: string
-  error: string
+  error?: string
 }
 
 
@@ -21,6 +20,7 @@ export class UnprocessableEntity extends CustomError {
     super(message)
     this.name = 'UnprocessableEntity'
     this.status = 422
+    this.error = 'UnprocessableEntity'
   }
 }
 
@@ -30,6 +30,7 @@ export class NotFound extends CustomError {
     super(message)
     this.name = 'NotFound'
     this.status = 404
+    this.error = 'NotFound'
   }
 }
 
@@ -39,6 +40,7 @@ export class BadRequest extends CustomError {
     super(message)
     this.name = 'BadRequest'
     this.status = 400
+    this.error = 'BadRequest'
   }
 }
 
@@ -48,6 +50,7 @@ export class Conflict extends CustomError {
     super(message)
     this.name = 'Conflict'
     this.status = 409
+    this.error = 'Conflict'
   }
 }
 

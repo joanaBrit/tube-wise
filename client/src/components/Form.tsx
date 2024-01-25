@@ -30,6 +30,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   //* On component render
   useEffect(() => {
     const fillFormField = async () => {
+
       if (!onLoad) return
       try {
         const { data } = await onLoad()
@@ -56,8 +57,9 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
     try {
       setLoading(true)
       const { data } = await request(formData)
-      if ('error' in data) {
 
+      if ('error' in data) {
+        setError(data.error)
       } else if ('token' in data) {
         const hasNoError = data === undefined || data.doNotNavigate === false
 
@@ -79,7 +81,11 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       setMessage('Form submitted successfuly!')
 
     } catch (error) {
-      const errorMessage = error.response?.data?.message || 'Internal Error'
+      // console.log('Full error object: ', error)
+      console.log('Front-end error: ', error)
+      console.log('Error response: ', error.response)
+
+      const errorMessage = error.response?.data?.error || 'Internal Error'
       setError(errorMessage)
       setLoading(false)
     }

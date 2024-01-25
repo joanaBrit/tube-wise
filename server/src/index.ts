@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import router from './config/routes'
-
+import path from 'path'
 import dotenv from 'dotenv'
 import { errorHandler } from './utils/errorMiddleware'
 
@@ -12,14 +12,25 @@ const app = express()
 //* Parse JSON body
 app.use(express.json())
 
-//* Specific routes
+// Specific routes
 app.use(router)
 
 //* Middleware error handler
 app.use((req, res) => { errorHandler(null, res) })
 
+// Serve static files
+app.use(express.static(path.join(__dirname, 'client', 'build')))
+
+//* API routes
+app.use('/api', router)
+
+// For all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+
 //* Route not found
-// app.use((req, res) => { return res.status(404).json({ message: 'Not found' }) })
+app.use((req, res) => { return res.status(404).json({ message: 'Not found' }) })
 
 const startServer = async () => {
   try {
