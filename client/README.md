@@ -134,6 +134,9 @@ export type LoginResponse = {
 - Debbuging and refacturing some parts code logic. 
 - Login and register fields.
 - Installed Material UI and addet to the form.
+- Debbuging and refactoring the user errors from the back end
+- installed cors to make the connection.
+
 5. Token Storage:
 - 
 6. Protected Routes:
