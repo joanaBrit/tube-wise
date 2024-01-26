@@ -13,12 +13,12 @@ const Login: FunctionComponent<LoginProps> = ({ onLogin }) => {
   const fields = [
     {
       type: 'text',
-      name: 'Username',
+      name: 'username',
       label: 'Username or Email',
     },
     {
       type: 'password',
-      name: 'Password',
+      name: 'password',
       label: 'Password',
     }
   ]
