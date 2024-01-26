@@ -1,18 +1,19 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
 
 // Page components
 import Home from './components/Home'
+import Nav from './components/Nav'
 import Login from './components/Login'
 import Register from './components/Register'
-import TubeIndex from './components/LineIndex'
-import Form from './components/Form'
+import Tubelines from './components/TubeLines'
+import LineIndex from './components/LineIndex'
+import { isAuthenticated } from './utils/Auth'
+
 
 
 function App() {
-
-  // const [data, setData] = useState(null)
 
   useEffect(() => {
     const getData = async () => {
@@ -20,27 +21,46 @@ function App() {
         await axios.get('/')
       // console.log(data)
       } catch (error) {
-        console.log('api', error)
+        console.log(error)
       }
-      
     }
     getData()
   }, [])
 
+  // const location = useLocation()
+  // const [user, setUser] = useState(isAuthenticated())
+
+  // useEffect(() => {
+  //   setUser(isAuthenticated())
+  // }, [location])
+
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+    () => localStorage.getItem('logged_user') !== null
+  )
+
+  useEffect(() => {
+    localStorage.setItem('logged_user', JSON.stringify(isLoggedIn))
+  }, [isLoggedIn])
+
+  const logIn = () => setIsLoggedIn(true)
+  const logOut = () => setIsLoggedIn(false)
 
   return (
     <>
+    <Nav/>
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/tube' element={<TubeIndex />} />
+        <Route path='/login' element={<Login onLogin={logIn}/>} />
+        <Route path='/tube' element={isLoggedIn? <Tubelines /> : <Navigate to='/login' />} />
+        <Route path='/tude/:lineId' element={isLoggedIn? <LineIndex /> : <Navigate to='/login' />} />
       </Routes>
     </>
   )
 }
 
-export default App;
+export default App
 
 
 {/* <Route path='/form' element={
@@ -62,3 +82,5 @@ export default App;
   //     throw error
   //   }
   // }
+
+  // const [data, setData] = useState(null)

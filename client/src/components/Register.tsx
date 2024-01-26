@@ -1,3 +1,4 @@
+import { RegisterUserResponse } from '../../../common/types'
 import { API_ROOT } from '../constants'
 import Form from './Form'
 import axios from 'axios'
@@ -28,13 +29,17 @@ const Register = () => {
     }
   ]
 
-  function register(formData){
-    return axios.post(API_ROOT+'/register', formData)
+  function register(formData) {
+    return axios.post(API_ROOT + '/register', formData)
   }
 
   return (
-    <Form title="Register" request={register} fields={fields} redirect="/login"/>
+    <Form title="Register" request={register} fields={fields} redirect="/login" processResponse={processResponse} />
   )
+
+  function processResponse(data: RegisterUserResponse) {
+    if (data.user) { console.log('yay') }
+  }
 }
 
 export default Register

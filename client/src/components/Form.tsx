@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ErrorResponse, LoginResponse } from '../../../common/types'
-import { setToken } from '../utils/Auth'
+import { ErrorResponse, LoginResponse, RegisterUserResponse } from '../../../common/types'
+
 import { TextField } from '@mui/material'
 
 
@@ -10,14 +10,15 @@ import { TextField } from '@mui/material'
 interface FormProps {
   title: string
   fields: Array<{ type: string, name: string, label: string }>
-  request: (data: any) => Promise<{ data: ErrorResponse | LoginResponse }>
+  request: (data: any) => Promise<{ data: ErrorResponse | LoginResponse | RegisterUserResponse }>
   redirect: string
   onLoad?: () => Promise<{ data: any }>
+  processResponse: (data) => void
 }
 
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
-  const { title, fields, request, redirect, onLoad } = props
+  const { title, fields, request, redirect, onLoad , processResponse} = props
 
   //* Variables
   const navigate = useNavigate()
@@ -59,14 +60,9 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
 
       if ('error' in data) {
         setError(data.error)
-      } else if ('token' in data) {
-        // const hasNoError = data === undefined || data.doNotNavigate === false
-
-        if (data.token) {
-          const tokenName = 'userID'
-          setToken(tokenName, data.token)
-        }
-
+      } else {
+        processResponse(data)
+        
         // Check if redirect
         if (redirect) {
           navigate(redirect)
@@ -93,23 +89,23 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   return (
     <section>
       <h1>{title}</h1>
-    <form onSubmit={handleSubmit}>
-      <div>
-        {fields.map((field) => (
-          <TextField
-            key={field.name}
-            label={field.label}
-            name={field.name}
-            type={field.type}
-            onChange={handleChange} />
-        ))}
-      </div>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      {message}
-      <button type="submit" >
-        {title}
-      </button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div>
+          {fields.map((field) => (
+            <TextField
+              key={field.name}
+              label={field.label}
+              name={field.name}
+              type={field.type}
+              onChange={handleChange} />
+          ))}
+        </div>
+        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {message}
+        <button type="submit" >
+          {title}
+        </button>
+      </form>
     </section>
   )
 }
