@@ -17,14 +17,14 @@ interface FormProps {
 
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
-  const { fields, request, redirect, onLoad } = props
+  const { title, fields, request, redirect, onLoad } = props
 
   //* Variables
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
   const [error, setError] = useState<string>('')
   const [message, setMessage] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(false)
+  // const [loading, setLoading] = useState<boolean>(false)
 
 
   //* On component render
@@ -40,7 +40,6 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         setError(String(error))
       }
     }
-
     console.log('On Load executed')
     fillFormField()
   }, [])
@@ -55,13 +54,13 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      setLoading(true)
+      // setLoading(true)
       const { data } = await request(formData)
 
       if ('error' in data) {
         setError(data.error)
       } else if ('token' in data) {
-        const hasNoError = data === undefined || data.doNotNavigate === false
+        // const hasNoError = data === undefined || data.doNotNavigate === false
 
         if (data.token) {
           const tokenName = 'userID'
@@ -69,29 +68,31 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         }
 
         // Check if redirect
-        if (redirect && hasNoError) {
+        if (redirect) {
           navigate(redirect)
         }
       }
 
-      // Reset form data after successful submission
-      setFormData({})
+      // // Reset form data after successful submission
+      // setFormData({})
 
       // Set successful message
       setMessage('Form submitted successfuly!')
 
     } catch (error) {
       // console.log('Full error object: ', error)
-      console.log('Front-end error: ', error)
-      console.log('Error response: ', error.response)
-
+      // console.log('Front-end error: ', error)
+      // console.log('Error response: ', error.response)
       const errorMessage = error.response?.data?.error || 'Internal Error'
+      console.log(errorMessage)
       setError(errorMessage)
-      setLoading(false)
+      // setLoading(false)
     }
   }
 
   return (
+    <section>
+      <h1>{title}</h1>
     <form onSubmit={handleSubmit}>
       <div>
         {fields.map((field) => (
@@ -104,11 +105,12 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         ))}
       </div>
       {error && <div style={{ color: 'red' }}>{error}</div>}
-      <button type="submit" disabled={loading}>
-        {message}
-        {loading ? 'Submitting...' : 'Submit'}
+      {message}
+      <button type="submit" >
+        {title}
       </button>
     </form>
+    </section>
   )
 }
 
