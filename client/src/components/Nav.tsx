@@ -1,95 +1,158 @@
 import * as React from 'react'
-import * as MUI from '@mui/system'
-import { AppBar, Box, Toolbar, Typography } from '@mui/material'
-import { IconButton, Menu, MenuItem} from '@mui/material'
-import { FormGroup, FormControlLabel, Switch } from '@mui/material'
+import { useState } from 'react'
 
+// MUI
+import { AppBar, Box, Toolbar, Typography, IconButton, Menu, MenuItem, Container, Popover, Button } from '@mui/material'
 import LoginIcon from '@mui/icons-material/Login'
 import MenuIcon from '@mui/icons-material/Menu'
+import Login from './Login'
 
-function Nav() {
 
-  const [auth, setAuth] = React.useState(true)
+
+const pages = ['Home', 'Map', 'journey', 'Lines']
+
+const Nav: React.FC = () => {
+
+  // const [auth, setAuth] = React.useState(true)
+  const [loginOpen, setLoginOpen] = useState(false)
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked)
+  const handleClick = () => {
+    // setAnchorEl(event.currentTarget)
+    setLoginOpen(true)
   }
 
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget)
   }
 
   const handleClose = () => {
-    setAnchorEl(null)
+    setAnchorElNav(null)
+    setLoginOpen(false)
   }
+
+  const id = loginOpen ? 'login-popover' : undefined
 
   return (
     // <h1>hello</h1>
-    <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <img
+            src={'/assets/tubeLogo.png'}
+            alt='Tube London Logo'
+            style={{ width: '100%', maxWidth: '500px', height: 'auto' }}
+          />
+          <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Photos
+            Tube Wise
           </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="medium"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleClose}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleClose}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Tube Wise
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleClose}
+                sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                < LoginIcon/>
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          )}
+                {page}
+              </Button>
+            ))}
+          </Box>
+          <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+            <LoginIcon></LoginIcon>
+
+          </Button>
+          {/* <Popover
+            id={id}
+            open={loginOpen}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+          >
+            
+
+            <Typography sx={{ p: 2 }}>{fields}</Typography>
+            <Login onClose={handleClose} />
+          </Popover> */}
         </Toolbar>
-      </AppBar>
-    </Box>
+      </Container>
+    </AppBar>
   )
 }
+
 
 
 export default Nav

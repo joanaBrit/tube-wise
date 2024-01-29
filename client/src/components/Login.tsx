@@ -6,7 +6,10 @@ import { setToken } from '../utils/Auth'
 import { LoginResponse } from '../../../common/types'
 
 interface LoginProps {
-  onLogin: (username: string, password: string) => void
+  onLogin: (
+    username: string, 
+    password: string, 
+    ) => void
 }
 
 const Login: FunctionComponent<LoginProps> = ({ onLogin }) => {
