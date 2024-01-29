@@ -134,12 +134,12 @@ export type LoginResponse = {
 - Debbuging and refacturing some parts code logic. 
 - Login and register fields.
 - Installed Material UI and addet to the form.
-- Debbuging and refactoring the user errors from the back end
+- Debbuging and refactoring the user errors from the back end.
 - installed cors to make the connection.
 - Tested in insomnia and in the browser.
 
-- installed some ui dependencies
-- 
+- installed some material ui dependencies
+- Inserted a Navbar file and styled as pretended.
 
 5. Token Storage:
 - 
