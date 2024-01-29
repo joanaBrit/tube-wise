@@ -136,6 +136,10 @@ export type LoginResponse = {
 - Installed Material UI and addet to the form.
 - Debbuging and refactoring the user errors from the back end
 - installed cors to make the connection.
+- Tested in insomnia and in the browser.
+
+- installed some ui dependencies
+- 
 
 5. Token Storage:
 - 
