@@ -139,7 +139,9 @@ export type LoginResponse = {
 - Tested in insomnia and in the browser.
 
 - installed some material ui dependencies
-- Inserted a Navbar file and styled as pretended.
+- Inserted a Navbar file and did some styling.
+- Cleaned the code of the Nav file.
+- 
 
 5. Token Storage:
 - 
