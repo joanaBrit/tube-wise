@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ErrorResponse, LoginResponse, RegisterUserResponse } from '../../../common/types'
 
 import { TextField } from '@mui/material'
+import FormLayout from './FormLayout'
 
 
 
@@ -26,7 +27,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   const [error, setError] = useState<string>('')
   const [message, setMessage] = useState<string>('')
   // const [loading, setLoading] = useState<boolean>(false)
-
+// const checked = props
 
   //* On component render
   useEffect(() => {
@@ -88,6 +89,8 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
 
   return (
     <section>
+      {/* <FormLayout handleChange={handleChange} checked={checked} />
+      {checked ? <Login onLogin={() => {}} checke={checked}/> : <Register />} */}
       <h1>{title}</h1>
       <form onSubmit={handleSubmit}>
         <div>
