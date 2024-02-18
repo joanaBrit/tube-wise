@@ -5,13 +5,12 @@ import axios from 'axios'
 // Page components
 import Home from './components/Home'
 import Nav from './components/Nav'
-import Login from './components/Login'
-import Register from './components/Register'
 import Tubelines from './components/TubeLines'
 import LineIndex from './components/LineIndex'
-import { isAuthenticated } from './utils/Auth'
+import RegisterAndLogin from './components/FormLayout'
 
 
+import './styles/main.css'
 
 function App() {
 
@@ -19,7 +18,7 @@ function App() {
     const getData = async () => {
       try {
         await axios.get('/')
-      // console.log(data)
+        // console.log(data)
       } catch (error) {
         console.log(error)
       }
@@ -34,27 +33,21 @@ function App() {
   //   setUser(isAuthenticated())
   // }, [location])
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
-    () => localStorage.getItem('logged_user') !== null
-  )
+  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+  //   () => localStorage.getItem('logged_user') !== null
+  // )
 
-  useEffect(() => {
-    localStorage.setItem('logged_user', JSON.stringify(isLoggedIn))
-  }, [isLoggedIn])
-
-  const logIn = () => setIsLoggedIn(true)
-  const logOut = () => setIsLoggedIn(false)
 
   return (
     <>
-    <Nav/>
+      <Nav />
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login onLogin={logIn}/>} />
-        <Route path='/tube' element={isLoggedIn? <Tubelines /> : <Navigate to='/login' />} />
-        <Route path='/tude/:lineId' element={isLoggedIn? <LineIndex /> : <Navigate to='/login' />} />
+        <Route path='/register' element={<RegisterAndLogin isRegisterTab={true} />} />
+        <Route path='/login' element={<RegisterAndLogin isRegisterTab={false} />} />
+        <Route path='/tube' element={<Tubelines />} />
+        <Route path='/tude/:lineId' element={<LineIndex />} />
       </Routes>
     </>
   )

@@ -6,11 +6,15 @@ import { AppBar, Box, Toolbar, Typography, IconButton, Menu, MenuItem, Container
 import LoginIcon from '@mui/icons-material/Login'
 import MenuIcon from '@mui/icons-material/Menu'
 import Login from './Login'
-import { redirect } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 
 
 
-const pages = ['Home', 'Map', 'journey', 'Lines']
+const pages = [
+  { label: 'Home', path: '/' },
+  { label: 'Map', path: '/' },
+  { label: 'journey', path: '/' },
+  { label: 'Lines', path: '/tube' }]
 
 const Nav: React.FC<{}> = () => {
 
@@ -47,7 +51,7 @@ const Nav: React.FC<{}> = () => {
               alt='Tube London Logo'
               style={{ width: '100%', maxWidth: '60px', height: 'auto' }}
             />
-            <DesktopToolbarContents handleClose={handleClose} />
+            <DesktopToolbarContents />
             <MobileToolbarContents anchorElNav={anchorElNav} handleClose={handleClose} />
             <LogIcon handleClick={handleClick} />
           </Toolbar>
@@ -57,18 +61,17 @@ const Nav: React.FC<{}> = () => {
   )
 }
 
-function DesktopToolbarContents(props: { handleClose: (e) => void }) {
+function DesktopToolbarContents() {
   return <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
     <AppTitle display={{ xs: 'none', md: 'flex' }} />
-    {pages.map((page) => (
-      <Button
-        key={page}
-        onClick={props.handleClose}
-        sx={{ my: 2, color: 'white', display: 'block' }}
-      >
-        {page}
-      </Button>
-    ))}
+    <div className='nav-links'>
+      {pages.map((page) => (
+        <Link key={page.label} to={{ pathname: page.path }}>
+          {page.label}
+        </Link>
+      ))}
+    </div>
+
   </Box>
 }
 
@@ -81,7 +84,7 @@ function MobileToolbarContents(props: { anchorElNav: HTMLElement, handleClose: (
         aria-label="account of current user"
         aria-controls="menu-appbar"
         aria-haspopup="true"
-        onClick={handleOpenNavMenu}
+        // onClick={handleOpenNavMenu}
         color="inherit"
       >
         <MenuIcon />
@@ -105,8 +108,8 @@ function MobileToolbarContents(props: { anchorElNav: HTMLElement, handleClose: (
         }}
       >
         {pages.map((page) => (
-          <MenuItem key={page} onClick={props.handleClose}>
-            <Typography textAlign="center">{page}</Typography>
+          <MenuItem key={page.label} onClick={props.handleClose}>
+            <Typography textAlign="center">{page.label}</Typography>
           </MenuItem>
         ))}
       </Menu>

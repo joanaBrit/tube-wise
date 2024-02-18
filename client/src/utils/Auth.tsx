@@ -1,3 +1,5 @@
+export const isLoggedIn = () => localStorage.getItem('logged_user') !== null
+
 export const setToken = (tokenName: string, token: string) => {
   localStorage.setItem(tokenName, token)
 }

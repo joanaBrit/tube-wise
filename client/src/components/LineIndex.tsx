@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { isLoggedIn } from '../utils/Auth'
+import { Navigate } from 'react-router-dom'
 
 
 interface apiProps {
@@ -28,6 +30,8 @@ const TubeIndex = () => {
     getTubeData()
   }, [])
 
+  if (!isLoggedIn()) return <Navigate to='/login' />
+  
   return (
     <>
       {tube && tube.length > 0 ? (

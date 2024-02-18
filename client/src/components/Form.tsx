@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { ErrorResponse, LoginResponse, RegisterUserResponse } from '../../../common/types'
 
 import { TextField } from '@mui/material'
-import FormLayout from './FormLayout'
+// import FormLayout from './FormLayout'
+
 
 
 
@@ -20,7 +21,11 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
   const { title, fields, request, redirect, onLoad , processResponse} = props
-
+  
+    // const [checked, setChecked] = useState(true)
+    // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //   setChecked(event.target.checked)
+    // }
   //* Variables
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
@@ -86,11 +91,10 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       // setLoading(false)
     }
   }
-
+  // checked={checked}
   return (
     <section>
-      {/* <FormLayout handleChange={handleChange} checked={checked} />
-      {checked ? <Login onLogin={() => {}} checke={checked}/> : <Register />} */}
+      {/* <FormLayout onCheckBoxChange={handleChange} checked={checked} /> */}
       <h1>{title}</h1>
       <form onSubmit={handleSubmit}>
         <div>
