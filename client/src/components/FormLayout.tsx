@@ -9,33 +9,32 @@ import PersonIcon from '@mui/icons-material/Person'
 import { useState } from 'react'
 import Login from './Login'
 import Register from './Register'
+import { Tab, Tabs } from '@mui/material'
 
 
 function RegisterAndLogin(props: { isRegisterTab: boolean }) {
 
   //* Handle change function
-  const [checked, setChecked] = useState(props.isRegisterTab ?? false)
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setChecked(event.target.checked)
-  // }
+  const [checked, setChecked] = useState(props.isRegisterTab ? 'register' : 'login')
+
+  const handleTabChange = (event, newValue) => {
+    setChecked(newValue)
+  }
 
   return (
-    <>
       <Paper elevation={3} style={{}}>
+        <Tabs
+          value={checked}
+          onChange={handleTabChange}
+          centered
+          style={{ gap: '1rem'}}
+        >
+          <Tab icon={<LockIcon />} label="Login" value="login" />
+          <Tab icon={<PersonIcon />} label="Register" value="register" />
+        </Tabs>
 
-        {checked
-          ? <Chip icon={<LockIcon />} label="Login" variant="outlined" color="primary" />
-          : <Chip icon={<PersonIcon />} label="Register" variant="outlined" color="primary" />
-        }
-
-        <Switch
-          checked={checked}
-          onChange={() => setChecked(!checked)}
-        />
-        {checked ? <Register /> : <Login />}
-
+        {checked === 'login' ? <Login /> : <Register />}
       </Paper>
-    </>
   )
 }
 

@@ -141,7 +141,7 @@ export type LoginResponse = {
 - Inserted a Navbar, made the connection file and did some styling for laptop and mobile view.
 - Create the onClick event to navigate to the correspond pages on my Nav bar.
 - Created a form layout to style the register and login form and to switch between one and another.
-- 
+- Styling the Register and Login form.
 
 5. Token Storage:
 - 
