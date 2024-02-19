@@ -106,10 +106,10 @@ Error handlers
 3. API Requests:
 - Use the fetch API or libraries like axios to make requests to your Node.js backend.
 4. User Registration/Login Forms:
-- Created a form for user to login.
+- Created a form for user to login and register.
 - inserted submit form data function to send data to the server.
-- Created handle Change and Submit.
-- Incerted a folder to be able to use the error from the backend errors with the front end.
+- created a folder called common in the middle of front end and back end to be able to use the error from the backend errors with the front end I exported the types.
+- 
 
 
 ```Typescript
@@ -135,12 +135,12 @@ export type LoginResponse = {
 - Login and register fields.
 - Installed Material UI and addet to the form.
 - Debbuging and refactoring the user errors from the back end.
-- installed cors to make the connection.
+- installed cors to make the connection between front end and back end.
 - Tested in insomnia and in the browser.
-
 - installed some material ui dependencies
-- Inserted a Navbar file and did some styling.
-- Cleaned the code of the Nav file.
+- Inserted a Navbar, made the connection file and did some styling for laptop and mobile view.
+- Create the onClick event to navigate to the correspond pages on my Nav bar.
+- Created a form layout to style the register and login form and to switch between one and another.
 - 
 
 5. Token Storage:
