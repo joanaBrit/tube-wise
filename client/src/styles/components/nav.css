@@ -8,3 +8,7 @@
   color: white;
   text-decoration: none;
 }
+
+.MuiToolbar-root{
+  gap: 2rem;
+}

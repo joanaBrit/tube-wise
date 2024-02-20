@@ -49,7 +49,7 @@ const Nav: React.FC<{}> = () => {
             <img
               src={'/assets/tubeLogo.png'}
               alt='Tube London Logo'
-              style={{ width: '100%', maxWidth: '60px', height: 'auto' }}
+              style={{ width: '100%', maxWidth: '70px', height: 'auto' }}
             />
             <DesktopToolbarContents />
             <MobileToolbarContents anchorElNav={anchorElNav} handleClose={handleClose} />
@@ -84,7 +84,6 @@ function MobileToolbarContents(props: { anchorElNav: HTMLElement, handleClose: (
         aria-label="account of current user"
         aria-controls="menu-appbar"
         aria-haspopup="true"
-        // onClick={handleOpenNavMenu}
         color="inherit"
       >
         <MenuIcon />
@@ -130,9 +129,10 @@ function AppTitle(props: { display }) {
       flexGrow: 1,
       fontFamily: 'monospace',
       fontWeight: 700,
-      letterSpacing: '.3rem',
+      letterSpacing: '.2rem',
       color: 'inherit',
       textDecoration: 'none',
+      marginLeft: '0.8rem'
     }}
   >
     Tube Wise

@@ -1,14 +1,15 @@
-.MuiPaper-root{
+/* .MuiPaper-root{
   text-align: center;
   width: 20rem;
   margin-left: auto; 
-  margin-right: 2rem;
+  margin-right: 1.5rem;
   margin-top: 5rem;
-  padding: 2rem;
+  padding: 0.5rem;
   cursor: none;
   background-color: transparent;
-  } 
+  }  */
   
+ 
   .MuiFormControl-root{
     gap: 2rem;
   }

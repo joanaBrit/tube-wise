@@ -22,7 +22,7 @@ function RegisterAndLogin(props: { isRegisterTab: boolean }) {
   }
 
   return (
-      <Paper elevation={3} style={{}}>
+      <Paper elevation={3} style={{ alignItems: 'center', width: '20rem', padding: '0.5rem', textAlign: 'center', marginTop: '5rem', marginLeft: 'auto', marginRight: '1.5rem', height: '30rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', backgroundColor: '#ffffffbd' }}>
         <Tabs
           value={checked}
           onChange={handleTabChange}
