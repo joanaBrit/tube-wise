@@ -1,34 +1,5 @@
-/* Login and Register */
-.form {
-  padding: '5rem';
-  display: 'flex';
-}
+#root{
+  background-color: aliceblue;
+  height: 100vh;
+  }
 
-.MuiPaper-root{
-text-align: center;
-width: 20rem;
-margin-left: auto; 
-margin-right: 2rem;
-margin-top: 5rem;
-padding: 2rem;
-} 
-
-.MuiTabs-root{
-  text-align: center;
-}
-
-/* .form-logo {
-  height: 40vw;
-  pointer-events: none;
-} */
-
-.nav-links {
-  display: flex;
-  gap: 1rem;
-  margin-right: 2.5rem;
-}
-
-.nav-links>a {
-  color: white;
-  text-decoration: none;
-}

@@ -27,7 +27,6 @@ function RegisterAndLogin(props: { isRegisterTab: boolean }) {
           value={checked}
           onChange={handleTabChange}
           centered
-          style={{ gap: '1rem'}}
         >
           <Tab icon={<LockIcon />} label="Login" value="login" />
           <Tab icon={<PersonIcon />} label="Register" value="register" />

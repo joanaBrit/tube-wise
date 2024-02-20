@@ -1,0 +1,10 @@
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  margin-right: 2.5rem;
+}
+
+.nav-links>a {
+  color: white;
+  text-decoration: none;
+}

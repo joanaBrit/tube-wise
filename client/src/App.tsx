@@ -10,7 +10,7 @@ import LineIndex from './components/LineIndex'
 import RegisterAndLogin from './components/FormLayout'
 
 
-import './styles/main.css'
+import './styles/global.css'
 
 function App() {
 

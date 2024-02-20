@@ -93,7 +93,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   }
   // checked={checked}
   return (
-    <section>
+    <section className='form-login-register'>
       {/* <FormLayout onCheckBoxChange={handleChange} checked={checked} /> */}
       <h1>{title}</h1>
       <form onSubmit={handleSubmit}>
