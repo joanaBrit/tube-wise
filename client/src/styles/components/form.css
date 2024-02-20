@@ -1,3 +1,11 @@
+.MuiFormControl-root {
+  gap: 2rem;
+}
+
+.form-login-register {
+  margin-top: 3rem;
+}
+
 /* .MuiPaper-root{
   text-align: center;
   width: 20rem;
@@ -8,12 +16,3 @@
   cursor: none;
   background-color: transparent;
   }  */
-  
- 
-  .MuiFormControl-root{
-    gap: 2rem;
-  }
-  
-  .form-login-register {
-    margin-top: 3rem;
-  }

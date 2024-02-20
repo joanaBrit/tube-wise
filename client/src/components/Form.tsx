@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorResponse, LoginResponse, RegisterUserResponse } from '../../../common/types'
 
-import { TextField } from '@mui/material'
-// import FormLayout from './FormLayout'
-
+import { Button, TextField } from '@mui/material'
 
 
 
@@ -18,21 +16,15 @@ interface FormProps {
   processResponse: (data) => void
 }
 
-
 const Form: React.FC<FormProps> = (props: FormProps) => {
   const { title, fields, request, redirect, onLoad , processResponse} = props
   
-    // const [checked, setChecked] = useState(true)
-    // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //   setChecked(event.target.checked)
-    // }
+    
   //* Variables
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
   const [error, setError] = useState<string>('')
   const [message, setMessage] = useState<string>('')
-  // const [loading, setLoading] = useState<boolean>(false)
-// const checked = props
 
   //* On component render
   useEffect(() => {
@@ -61,7 +53,6 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      // setLoading(true)
       const { data } = await request(formData)
 
       if ('error' in data) {
@@ -75,9 +66,6 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         }
       }
 
-      // // Reset form data after successful submission
-      // setFormData({})
-
       // Set successful message
       setMessage('Form submitted successfuly!')
 
@@ -88,13 +76,11 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
       const errorMessage = error.response?.data?.error || 'Internal Error'
       console.log(errorMessage)
       setError(errorMessage)
-      // setLoading(false)
     }
   }
-  // checked={checked}
+
   return (
     <section className='form-login-register'>
-      {/* <FormLayout onCheckBoxChange={handleChange} checked={checked} /> */}
       <h1>{title}</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -107,11 +93,11 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
               onChange={handleChange} />
           ))}
         </div>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {error && <div style={{ color: 'red', marginTop: '1.5rem' }}>{error}</div>}
         {message}
-        <button type="submit" >
+        <Button variant="outlined" size="medium" type="submit" style={{ margin: '2rem' }}>
           {title}
-        </button>
+        </Button>
       </form>
     </section>
   )
