@@ -142,6 +142,7 @@ export type LoginResponse = {
 - Create the onClick event to navigate to the correspond pages on my Nav bar.
 - Created a form layout to style the register and login form and to switch between one and another.
 - Styling the Register and Login form.
+- Inserted the events handling, make it work as pretend on the Nav bar for destop and mobile view and make the navigation to the respective pages.
 
 5. Token Storage:
 - 
@@ -223,6 +224,19 @@ How did I fix the error?
 ### Key Learnings
 
 1. Learnind typescript, could be challege at time but then to see what you can get from it is very good.
+
+2. I was writing this code snippet, I found myself wondering why I kept the event parameter if I wasn't using it. Well, it turns out it is still essential because, when the function is called, the first parameter passed will always be the event, and not my newValue!
+
+These small learnings come from practice and foster a continuous journey of growth and improvement as a developer. 
+
+``` typescript
+
+const handleTabChange = (event, newValue) => {
+    setChecked(newValue)
+  }
+
+```
+
 
 
 ### Bugs
