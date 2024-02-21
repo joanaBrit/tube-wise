@@ -2,11 +2,10 @@ import * as React from 'react'
 import { useRef, useState } from 'react'
 
 // MUI
-import { AppBar, Box, Toolbar, Typography, IconButton, Menu, MenuItem, Container, Popover, Button } from '@mui/material'
+import { AppBar, Box, Toolbar, Typography, IconButton, Menu, MenuItem, Container } from '@mui/material'
 import LoginIcon from '@mui/icons-material/Login'
 import MenuIcon from '@mui/icons-material/Menu'
-import Login from './Login'
-import { Link, Navigate, redirect, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -16,13 +15,13 @@ const pages = [
   { label: 'journey', path: '/' },
   { label: 'Lines', path: '/tube' }]
 
-const Nav: React.FC<{}> = () => {
+const Nav = () => {
 
   // const [auth, setAuth] = React.useState(true)
-  const [loginOpen, setLoginOpen] = useState(false)
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const navigate = useNavigate()
+  // const [loginOpen, setLoginOpen] = useState(false)
+  // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
+  // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  // const navigate = useNavigate()
 
 
 
@@ -35,26 +34,23 @@ const Nav: React.FC<{}> = () => {
   //   setLoginOpen(false)
   // }
 
-  const id = loginOpen ? 'login-popover' : undefined
+  // const id = loginOpen ? 'login-popover' : undefined
 
   return (
-    <section>
-
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <img
-              src={'/assets/tubeLogo.png'}
-              alt='Tube London Logo'
-              style={{ width: '100%', maxWidth: '70px', height: 'auto' }}
-            />
-            <DesktopToolbarContents />
-            <MobileToolbarContents />
-            <LogIcon />
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </section>
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <img
+            src={'/assets/tubeLogo.png'}
+            alt='Tube London Logo'
+            style={{ width: '100%', maxWidth: '70px', height: 'auto' }}
+          />
+          <DesktopToolbarContents />
+          <MobileToolbarContents />
+          <LogIcon />
+        </Toolbar>
+      </Container>
+    </AppBar>
   )
 }
 
@@ -68,7 +64,6 @@ function DesktopToolbarContents() {
         </Link>
       ))}
     </div>
-
   </Box>
 }
 
@@ -85,7 +80,7 @@ function MobileToolbarContents() {
         aria-controls="menu-appbar"
         aria-haspopup="true"
         color="inherit"
-        onClick={()=>setIsOpen(true)}
+        onClick={() => setIsOpen(true)}
         ref={menuButton}      >
         <MenuIcon />
       </IconButton>
@@ -144,9 +139,9 @@ function LogIcon() {
 
   return (
     <Link to="/login">
-    <IconButton size='large' edge='start' color='inherit' aria-label='login'>
-      <LoginIcon/>
-    </IconButton>
+      <IconButton size='large' edge='start' color='inherit' aria-label='login'>
+        <LoginIcon />
+      </IconButton>
     </Link>
   )
 }

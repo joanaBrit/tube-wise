@@ -17,9 +17,8 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
-  const { title, fields, request, redirect, onLoad , processResponse} = props
-  
-    
+  const { title, fields, request, redirect, onLoad, processResponse } = props
+
   //* Variables
   const navigate = useNavigate()
   const [formData, setFormData] = useState({})
@@ -35,7 +34,6 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
         const { data } = await onLoad()
         setFormData(data)
       } catch (error) {
-        // console.error(error)
         setError(String(error))
       }
     }
@@ -52,23 +50,21 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     try {
       const { data } = await request(formData)
-
       if ('error' in data) {
         setError(data.error)
       } else {
         processResponse(data)
-        
+
         // Check if redirect
         if (redirect) {
           navigate(redirect)
         }
       }
-
       // Set successful message
       setMessage('Form submitted successfuly!')
-
     } catch (error) {
       // console.log('Full error object: ', error)
       // console.log('Front-end error: ', error)
@@ -102,5 +98,6 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
     </section>
   )
 }
+
 
 export default Form
