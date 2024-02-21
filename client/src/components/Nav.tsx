@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 // MUI
 import { AppBar, Box, Toolbar, Typography, IconButton, Menu, MenuItem, Container, Popover, Button } from '@mui/material'
 import LoginIcon from '@mui/icons-material/Login'
 import MenuIcon from '@mui/icons-material/Menu'
 import Login from './Login'
-import { Link, redirect } from 'react-router-dom'
+import { Link, Navigate, redirect, useNavigate } from 'react-router-dom'
 
 
 
@@ -22,21 +22,18 @@ const Nav: React.FC<{}> = () => {
   const [loginOpen, setLoginOpen] = useState(false)
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const navigate = useNavigate()
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    // setAnchorEl(event.currentTarget)
-    setLoginOpen(true)
-    redirect('/login')
-  }
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget)
-  }
 
-  const handleClose = (e) => {
-    setAnchorElNav(null)
-    setLoginOpen(false)
-  }
+  // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorElNav(event.currentTarget)
+  // }
+
+  // const handleClose = (e) => {
+  //   setAnchorElNav(null)
+  //   setLoginOpen(false)
+  // }
 
   const id = loginOpen ? 'login-popover' : undefined
 
@@ -52,8 +49,8 @@ const Nav: React.FC<{}> = () => {
               style={{ width: '100%', maxWidth: '70px', height: 'auto' }}
             />
             <DesktopToolbarContents />
-            <MobileToolbarContents anchorElNav={anchorElNav} handleClose={handleClose} />
-            <LogIcon handleClick={handleClick} />
+            <MobileToolbarContents />
+            <LogIcon />
           </Toolbar>
         </Container>
       </AppBar>
@@ -75,7 +72,10 @@ function DesktopToolbarContents() {
   </Box>
 }
 
-function MobileToolbarContents(props: { anchorElNav: HTMLElement, handleClose: (e) => void }, handleOpenNavMenu: (e) => void) {
+function MobileToolbarContents() {
+  const [isOpen, setIsOpen] = useState(false)
+  const menuButton = useRef<HTMLButtonElement>(null)
+
   const displayProp = { xs: 'flex', md: 'none' }
   return <>
     <Box sx={{ flexGrow: 1, display: displayProp, alignItems: 'center' }}>
@@ -85,12 +85,13 @@ function MobileToolbarContents(props: { anchorElNav: HTMLElement, handleClose: (
         aria-controls="menu-appbar"
         aria-haspopup="true"
         color="inherit"
-      >
+        onClick={()=>setIsOpen(true)}
+        ref={menuButton}      >
         <MenuIcon />
       </IconButton>
       <Menu
         id="menu-appbar"
-        anchorEl={props.anchorElNav}
+        anchorEl={menuButton.current}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -100,15 +101,15 @@ function MobileToolbarContents(props: { anchorElNav: HTMLElement, handleClose: (
           vertical: 'top',
           horizontal: 'left',
         }}
-        open={Boolean(props.anchorElNav)}
-        onClose={props.handleClose}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
         sx={{
           display: { xs: 'block', md: 'none' },
         }}
       >
         {pages.map((page) => (
-          <MenuItem key={page.label} onClick={props.handleClose}>
-            <Typography textAlign="center">{page.label}</Typography>
+          <MenuItem key={page.label} onClick={() => setIsOpen(false)}>
+            <Link className='menu-links' to={{ pathname: page.path }}>{page.label}</Link>
           </MenuItem>
         ))}
       </Menu>
@@ -139,11 +140,14 @@ function AppTitle(props: { display }) {
   </Typography>
 }
 
-function LogIcon(props: { handleClick: (e) => void }) {
+function LogIcon() {
+
   return (
-    <IconButton size='large' edge='start' color='inherit' aria-label='login' >
-      <LoginIcon onClick={props.handleClick} />
+    <Link to="/login">
+    <IconButton size='large' edge='start' color='inherit' aria-label='login'>
+      <LoginIcon/>
     </IconButton>
+    </Link>
   )
 }
 

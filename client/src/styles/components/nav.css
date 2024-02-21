@@ -9,6 +9,16 @@
   text-decoration: none;
 }
 
-.MuiToolbar-root{
+.MuiToolbar-root {
   gap: 2rem;
+}
+
+a.menu-links {
+  color: #0012a9;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a.menu-links:hover {
+  color: #dd1f19;
 }
