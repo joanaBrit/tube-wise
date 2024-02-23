@@ -139,7 +139,7 @@ function LogIcon() {
 
   return (
     <Link to="/login">
-      <IconButton size='large' edge='start' color='inherit' aria-label='login'>
+      <IconButton size='large' edge='start' aria-label='login' sx={{ color: 'white' }}>
         <LoginIcon />
       </IconButton>
     </Link>
