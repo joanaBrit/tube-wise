@@ -25,12 +25,11 @@ function RegisterAndLogin(props: { isRegisterTab: boolean }) {
     <Paper elevation={3} style={{
       alignItems: 'center',
       width: '20rem',
-      padding: '0.5rem',
+      padding: '1rem',
       textAlign: 'center',
       marginTop: '5rem',
       marginLeft: 'auto',
       marginRight: '1.5rem',
-      height: '30rem',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',

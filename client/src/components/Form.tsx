@@ -77,7 +77,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
 
   return (
     <section className='form-login-register'>
-      <h1>{title}</h1>
+      <h1 style={{ marginBottom: '2rem' }}>{title}</h1>
       <form onSubmit={handleSubmit}>
         <div>
           {fields.map((field) => (
