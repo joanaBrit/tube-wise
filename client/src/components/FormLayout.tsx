@@ -33,7 +33,7 @@ function RegisterAndLogin(props: { isRegisterTab: boolean }) {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      backgroundColor: '#ffffffbd'
+      backgroundColor: 'rgb(255 255 255 / 85%)'
     }}>
       <Tabs
         value={checked}
