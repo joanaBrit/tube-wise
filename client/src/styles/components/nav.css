@@ -22,3 +22,7 @@ a.menu-links {
 a.menu-links:hover {
   color: #dd1f19;
 }
+
+.title {
+  cursor: auto;
+}

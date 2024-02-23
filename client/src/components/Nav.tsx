@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 const pages = [
   { label: 'Home', path: '/' },
   { label: 'Map', path: '/' },
-  { label: 'journey', path: '/' },
+  { label: 'Journey', path: '/' },
   { label: 'Lines', path: '/tube' }]
 
 const Nav = () => {
@@ -131,7 +131,7 @@ function AppTitle(props: { display }) {
       marginLeft: '0.8rem'
     }}
   >
-    Tube Wise
+    <div className='title'>Tube Wise</div>
   </Typography>
 }
 
