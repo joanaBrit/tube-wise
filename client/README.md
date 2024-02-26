@@ -17,11 +17,11 @@
 ### Installation:
 
 * 
+* npm i react-zoom-pan-pinch (zoom in feature)
 
 ### Development Tools:
 
 * Figma
-* Trello Board
 * Github
 * Insomnia 
 * Google Chrome dev tools
@@ -31,29 +31,36 @@
 ### Front-end:
 
 * React
+* typescript
 * Axios
 * React Router Dom
+* Material UI
+
+
+### Back-end:
+
+* Typescript
+* Node.js
+
 
 
 
 ## Brief
 
-
+- Using Transport for London API, 500 Request per minute.
 
 #### Necessary Deliverables:
 
 * Working App hosted on the internet.
-* User 
+* User friendly
 
 
 ## Planing
 
 
 
-### Wireframe Plan:
 
-
-### Project Management on Trello:
+### Project Management:
 
 
 
@@ -133,6 +140,7 @@ export type LoginResponse = {
 - Create user authentication for the token.
 - Debbuging and refacturing some parts code logic. 
 - Login and register fields.
+- Tested in Insomnia.
 - Installed Material UI and addet to the form.
 - Debbuging and refactoring the user errors from the back end.
 - installed cors to make the connection between front end and back end.
@@ -143,6 +151,54 @@ export type LoginResponse = {
 - Created a form layout to style the register and login form and to switch between one and another.
 - Styling the Register and Login form.
 - Inserted the events handling, make it work as pretend on the Nav bar for destop and mobile view and make the navigation to the respective pages.
+
+- Created a Map file and establish the navigation on the App.tsx
+- Searched and inserted a picture of the tube lines map
+- installed react-zoom-pan-pinch
+- Inserted a zoom in, zoom out and a clear button.
+- inserted logic to disable the buttons when they're not needed.
+
+
+
+To do:
+
+Home Page:
+- add the descreption.... about tube wise ✅
+- Missing something
+- style
+
+Footer:
+Make a footer with tube web page in case 
+- Get help: tube page
+- 2024 Tube Wise
+- support : email
+- Git hub
+- Style
+
+Map Page
+- Have the map image from Tube ✅
+- Style it
+
+Check your journey:
+- Fetch Tube API for the user to be able to choose the route
+- Fetch API to for the Info about the line (Good, Delays....)
+- Style:
+- From: To:
+- Date
+- A selecter to select the tube lines
+
+
+Tube lines
+- Fetch the API to show the tube lines
+- Info about the Station Data if it's close
+
+
+Tube Lines index
+- Fetch API to for the Info about the line (Good, Delays....)
+- Lift disruptions for people accessibility.
+- Info about if it's crowding
+- Info about AccidentStats
+
 
 5. Token Storage:
 - 

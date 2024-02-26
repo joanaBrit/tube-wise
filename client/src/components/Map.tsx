@@ -5,19 +5,16 @@ import { useState } from "react"
 import ZoomInIcon from '@mui/icons-material/ZoomIn'
 import ZoomOutIcon from '@mui/icons-material/ZoomOut'
 import ClearIcon from '@mui/icons-material/Clear'
-import { DisabledByDefault } from "@mui/icons-material"
+
+
 
 const Map = () => {
 
   function Controls() {
     const { zoomIn, zoomOut, resetTransform } = useControls()
     const [zoomCount, setzoomCount] = useState(0)
-
-
     const maxZoom = 3
     const minZoom = 0
-
-
 
     return (
       <>
