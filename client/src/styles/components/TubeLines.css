@@ -1,0 +1,18 @@
+.tube-line-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20vw, 300px));
+  gap: 1rem;
+}
+
+.tube-line-container button {
+  text-transform: unset;
+  background: #fff;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.tube-line-container button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 5px #00000020;
+  background: #fff;
+}

@@ -6,7 +6,6 @@ import axios from 'axios'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import Tubelines from './components/TubeLines'
-import LineIndex from './components/LineIndex'
 import RegisterAndLogin from './components/FormLayout'
 import Map from './components/Map'
 
@@ -47,8 +46,7 @@ function App() {
         <Route path='/register' element={<RegisterAndLogin isRegisterTab={true} />} />
         <Route path='/login' element={<RegisterAndLogin isRegisterTab={false} />} />
         <Route path='/tube' element={<Tubelines />} />
-        <Route path='/map' element={<Map />}/>
-        <Route path='/tude/:lineId' element={<LineIndex />} />
+        <Route path='/map' element={<Map />} />
       </Routes>
     </>
   )

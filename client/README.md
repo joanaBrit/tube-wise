@@ -158,6 +158,8 @@ export type LoginResponse = {
 - Inserted a zoom in, zoom out and a clear button.
 - inserted logic to disable the buttons when they're not needed.
 
+- fetched the tube lines data and styled
+
 
 
 To do:
@@ -189,12 +191,9 @@ Check your journey:
 
 
 Tube lines
-- Fetch the API to show the tube lines
-- Info about the Station Data if it's close
-
-
-Tube Lines index
-- Fetch API to for the Info about the line (Good, Delays....)
+- Fetch the API to show the tube lines ✅
+- Line status ✅
+- Info about the Station Data if it's close desruptions
 - Lift disruptions for people accessibility.
 - Info about if it's crowding
 - Info about AccidentStats
