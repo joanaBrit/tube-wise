@@ -1,8 +1,13 @@
 import { Navigate } from "react-router-dom"
 import { isLoggedIn } from "../utils/Auth"
-import axios from "axios"
 import { useState, useEffect } from "react"
-import { Button, Paper } from "@mui/material"
+import axios from "axios"
+
+// MUI
+import { Button } from "@mui/material"
+
+
+
 interface ApiProps {
   name: string
   lineStatuses: Array<{ statusSeverityDescription: string }>

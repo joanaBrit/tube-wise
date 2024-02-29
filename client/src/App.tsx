@@ -1,10 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import axios from 'axios'
 
 // Page components
 import Home from './components/Home'
 import Nav from './components/Nav'
+import Footer from './components/Footer'
 import Tubelines from './components/TubeLines'
 import RegisterAndLogin from './components/FormLayout'
 import Map from './components/Map'
@@ -48,6 +49,7 @@ function App() {
         <Route path='/tube' element={<Tubelines />} />
         <Route path='/map' element={<Map />} />
       </Routes>
+      <Footer />
     </>
   )
 }
