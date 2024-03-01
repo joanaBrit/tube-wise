@@ -1,5 +1,5 @@
 // MUI
-import { BottomNavigation, BottomNavigationAction } from '@mui/material'
+import { Typography } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import GitHubIcon from '@mui/icons-material/GitHub'
@@ -12,23 +12,48 @@ function Footer() {
   return (
     <>
       <Paper
-        elevation={1}
+        elevation={0}
         sx={{
           width: '100%',
-          height: 100,
+          height: 150,
           position: 'absolute',
           bottom: 0,
-          backgroundColor: 'rgb(0 0 0 / 100%)'
+          backgroundColor: 'rgb(4 28 52)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-around',
         }}
+
       >
-        <div className='navigation-button'>
-          <BottomNavigation>
-          <BottomNavigationAction  icon={<LinkedInIcon />} />
-          <BottomNavigationAction  icon={<GitHubIcon />} />
-          <BottomNavigationAction  icon={<LanguageIcon />} />
-          </BottomNavigation>
+        <Typography
+          sx={{
+            flexGrow: 1,
+            letterSpacing: '.1rem',
+            color: '#fff',
+            marginLeft: '3rem'
+          }}
+        >
+          <h3>Need help?</h3>
+          <div className='help-elements'>
+            <a href='mailto:joanabrito216@gmail.com'>Email Me</a>
+            <a href='https://tfl.gov.uk/'>TFL Support</a>
+          </div>
+        </Typography>
+        <div className='icon-container'>
+          <div className='navigation-btn'>
+            <a href='https://www.linkedin.com/in/joana-brito216/'>
+              <LinkedInIcon />
+            </a>
+            <a href='https://github.com/joanaBrit'>
+              <GitHubIcon />
+            </a>
+            <a href='https://joanabrit.github.io/portfolio/'>
+              <LanguageIcon />
+            </a>
+          </div>
+          <p>© 2024 Tube Wise</p>
         </div>
-      </Paper>
+      </Paper >
     </>
   )
 }

@@ -116,8 +116,8 @@ function AppTitle(props: { display }) {
   return <Typography
     variant="h5"
     noWrap
-    component="a"
-    href="#app-bar-with-responsive-menu"
+    // component="a"
+    // href="#app-bar-with-responsive-menu"
     sx={{
       mr: 2,
       display: props.display,
