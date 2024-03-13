@@ -36,8 +36,8 @@ const Tubelines = () => {
   if (!isLoggedIn()) return <Navigate to='/login' />
 
   return (
-    <div>
-      <h1>Tube lines</h1>
+    <div className="lines">
+      <h1>Tube Lines</h1>
       <div className="tube-line-container" >
         {tube && tube.map(lineInfo => <Button variant="text" >
           {lineInfo.name}: {lineInfo.lineStatuses[0].statusSeverityDescription}

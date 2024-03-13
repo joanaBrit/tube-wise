@@ -169,12 +169,15 @@ Home Page:
 - Missing something
 - style
 
+Register and Login Page:
+- Missing something on the left side (image or text)
+
 Footer:
-Make a footer with tube web page in case 
-- Get help: tube page
-- 2024 Tube Wise
-- support : email
-- Git hub
+Make a footer with tube web page in case ✅
+- Get help: tube page ✅
+- 2024 Tube Wise ✅
+- support : email ✅
+- Git hub / Social media ✅
 - Style
 
 Map Page

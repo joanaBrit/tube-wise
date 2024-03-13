@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom'
 
 const pages = [
   { label: 'Home', path: '/' },
-  { label: 'Map', path: '/' },
-  { label: 'Journey', path: '/' },
+  { label: 'Map', path: '/map' },
+  { label: 'Journey', path: '/journey' },
   { label: 'Lines', path: '/tube' }]
 
 const Nav = () => {
