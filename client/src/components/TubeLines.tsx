@@ -1,11 +1,12 @@
 import { Navigate } from "react-router-dom"
 import { isLoggedIn } from "../utils/Auth"
 import React, { useState, useEffect } from "react"
-import Popover from "@mui/material/Popover"
 import axios from "axios"
 
 // MUI
 import { Button, Typography } from "@mui/material"
+import Popover from "@mui/material/Popover"
+import { CircularProgress } from "@mui/material"
 
 
 
@@ -57,6 +58,7 @@ function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
 function Tubelines() {
   //* State
   const [tube, setTube] = useState<ApiProps[]>()
+  const [isLoading, setIsLoading] = useState(true)
 
   //* Initial Render / fetching the data
   useEffect(() => {
@@ -65,6 +67,7 @@ function Tubelines() {
         const { data } = await axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status')
         setTube(data)
         console.log(data)
+        setIsLoading(false)
       } catch (error) {
         console.error('Something Went Wrong Please Try Again', error)
       }
@@ -82,6 +85,7 @@ function Tubelines() {
         {tube && tube.map((lineInfo, index) => (
           <TubeLineStatus key={index} lineInfo={lineInfo} />
         ))}
+        {isLoading && <CircularProgress />}
       </div>
     </div>
   )
