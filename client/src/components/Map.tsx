@@ -17,28 +17,30 @@ const Map = () => {
     const minZoom = 0
 
     return (
-      <>
+      <div className="zoom-buttons">
         <button onClick={() => { zoomIn(); setzoomCount(zoomCount + 1) }} disabled={zoomCount === maxZoom}><ZoomInIcon /></button>
         <button onClick={() => { zoomOut(); setzoomCount(zoomCount - 1) }} disabled={zoomCount === minZoom}><ZoomOutIcon /></button>
         <button onClick={() => { resetTransform(); setzoomCount(0) }} disabled={zoomCount === minZoom}><ClearIcon /></button>
-      </>
+      </div>
     )
   }
 
   return (
     <>
-      <div className="map">
+      <div className="map-title">
         <h1>Map</h1>
         <h3>Tube Lines</h3>
       </div>
-      <TransformWrapper>
+      <TransformWrapper >
         <Controls />
-        <TransformComponent>
+        <TransformComponent >
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: '0.2rem'}}>
           <img
             src='/assets/tubeMap2024.png'
             alt='Tube lines map'
             width='90%'
           />
+          </div>
         </TransformComponent>
       </TransformWrapper>
     </>

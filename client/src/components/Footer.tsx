@@ -30,7 +30,7 @@ function Footer() {
             flexGrow: 1,
             letterSpacing: '.1rem',
             color: '#fff',
-            marginLeft: '3rem'
+            marginLeft: '4rem'
           }}
         >
           <h3>Need help?</h3>

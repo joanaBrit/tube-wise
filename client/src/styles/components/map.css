@@ -1,4 +1,12 @@
-/* img {
-  width: 90%;
-  background-size: cover;
-} */
+.zoom-buttons {
+  display: flex;
+  gap: 0.1rem;
+  margin: 0 1.5rem;
+  justify-content: flex-end;
+}
+
+.zoom-buttons button {
+  background-color: #fff6f3;
+  color: #1976d2;
+  gap: 0.2rem;
+}
