@@ -62,7 +62,7 @@
 
 ### Project Management:
 
-
+This is a project to showcase some skills and keep learning in this case for the first time working with Typescript and Material UI. I'm doing this side project as well while searching for a job, then was not a limit time to complete, the most importante is to learn. 
 
 
 ## Project Breakdown
@@ -160,6 +160,10 @@ export type LoginResponse = {
 
 - fetched the tube lines data and styled
 
+- implemented a footer with help information, social media and styled
+
+- implemented a popover and a logic to show the line status only when is not Good service
+
 
 
 To do:
@@ -191,15 +195,17 @@ Check your journey:
 - From: To:
 - Date
 - A selecter to select the tube lines
+- Lift disruptions for people accessibility.
+- Info about if it's crowding
+- Info about AccidentStats
 
 
 Tube lines
 - Fetch the API to show the tube lines ✅
 - Line status ✅
-- Info about the Station Data if it's close desruptions
-- Lift disruptions for people accessibility.
-- Info about if it's crowding
-- Info about AccidentStats
+- Info about the Station Data if it's close desruptions ✅
+- Add a Spinner ✅
+- Styling
 
 
 5. Token Storage:
