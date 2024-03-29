@@ -190,6 +190,8 @@ Map Page
 
 Check your journey:
 - Fetch Tube API for the user to be able to choose the route
+- jsonprettify.com - post any json and track how it isd
+- Find the ids for each tube station - naptanId (see the list)
 - Fetch API to for the Info about the line (Good, Delays....)
 - Style:
 - From: To:
