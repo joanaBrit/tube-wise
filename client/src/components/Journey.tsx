@@ -1,4 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { isLoggedIn } from "../utils/Auth"
+import { Navigate } from "react-router-dom"
+import axios from "axios"
 
 /**
  * Add Journey component to App
@@ -17,11 +20,32 @@ import { useState } from "react"
  * already built for the Tube Line page.
  */
 
-function Journey (){
 
-return (
-<></>
-)
+function Journey() {
+
+  const [journey, setJourney] = useState()
+
+  useEffect(() => {
+    async function getJourneyData() {
+      try {
+        const { data } = await axios.get('https://api.tfl.gov.uk/Journey/JourneyResults/{from}/to/{to}')
+        setJourney(data)
+        console.log(data)
+      } catch (error) {
+        console.error('Something Went Wrong Please Try Again', error)
+      }
+    }
+    getJourneyData()
+  }, [])
+
+
+  if (!isLoggedIn()) return <Navigate to='/login' />
+
+  return (
+    <>
+    
+    </>
+  )
 }
 
 
