@@ -3,6 +3,10 @@ import { isLoggedIn } from "../utils/Auth"
 import { Navigate } from "react-router-dom"
 import axios from "axios"
 
+// MUI
+import { FormControl, InputLabel, MenuItem } from "@mui/material"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+
 /**
  * Add Journey component to App
  * Have the options for a dropdown menu to select valid tube stations
@@ -43,8 +47,61 @@ function Journey() {
 
   return (
     <>
-    
+      <FromDropdown />
+      <ToDropdown />
     </>
+  )
+}
+
+function FromDropdown() {
+
+  const [fromStation, setTFromChange] = useState()
+
+  const handleFromChange = (event) => { //(event: SelectChangeEvent)
+    setTFromChange(event.target.value)
+  }
+
+
+
+  return (
+    <FormControl>
+      <InputLabel id="from-label">From</InputLabel>
+      <Select
+        labelId="from-label"
+        id="from-select"
+        value={fromStation}
+        label="From"
+        onChange={handleFromChange}
+      >
+        <MenuItem value={'tube lines'}>{'tubeline'}</MenuItem>
+      </Select>
+    </FormControl>
+  )
+}
+
+function ToDropdown() {
+
+  const [toStation, setToChange] = useState()
+
+  const handleToChange = (event) => {
+    setToChange(event.target.value)
+  }
+
+
+
+  return (
+    <FormControl>
+      <InputLabel id="to-label">To</InputLabel>
+      <Select
+        labelId="to-label"
+        id="to-select"
+        value={toStation}
+        label="To"
+        onChange={handleToChange}
+      >
+        <MenuItem value={'tube lines'}>{'tubeline'}</MenuItem>
+      </Select>
+    </FormControl>
   )
 }
 
