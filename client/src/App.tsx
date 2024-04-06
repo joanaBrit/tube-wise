@@ -48,7 +48,7 @@ function App() {
         <Route path='/register' element={<RegisterAndLogin isRegisterTab={true} />} />
         <Route path='/login' element={<RegisterAndLogin isRegisterTab={false} />} />
         <Route path='/tube' element={<Tubelines />} />
-        <Route path='/tube' element={<Journey />} />
+        <Route path='/journey' element={<Journey />} />
         <Route path='/map' element={<Map />} />
       </Routes>
       <Footer />
