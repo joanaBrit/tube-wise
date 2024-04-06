@@ -158,12 +158,21 @@ export type LoginResponse = {
 - Inserted a zoom in, zoom out and a clear button.
 - inserted logic to disable the buttons when they're not needed.
 
-- fetched the tube lines data and styled
+- Fetched the tube lines data and styled
 
-- implemented a footer with help information, social media and styled
+- Implemented a footer with help information, social media and styled
 
-- implemented a popover and a logic to show the line status only when is not Good service
+- Implemented a popover and a logic to show the line status only when is not Good service
 
+- Connected the journey page to the App
+- Allow the user to have access to the page only if it's login in.
+
+- See how the journey API works, from - to, tested. jsonprettify was really good to see and understand better the data.
+- since I wante to use the lines in a dropdown there is no point to fect everytime because in this case it will be static, will not be changing constantly, so I decided to search an I found this usefull resource where it has the naptanID of each line.
+- Copied the naptanID from the sourse, created and exported the variable NAPTAN_IDS and pasted on my constants file.  
+- created two functions one for From dropdown and the other for the To dropdown.
+- MUI dropdown basic select see the documentation and try to implement.
+- set the inial render for from and to.
 
 
 To do:
