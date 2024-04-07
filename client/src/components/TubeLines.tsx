@@ -10,14 +10,14 @@ import { CircularProgress } from "@mui/material"
 
 
 
-interface ApiProps {
+export interface ApiProps {
   name: string
   lineStatuses: Array<{ statusSeverityDescription: string, reason: string }>
   modified: string
 }
 
 
-function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
+export function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
   //* Popover
   const [popover, setPopover] = useState<HTMLButtonElement>(null)
   const open = Boolean(popover)
@@ -57,7 +57,7 @@ function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
 
 function Tubelines() {
   //* State
-  const [tube, setTube] = useState<ApiProps[]>()
+  const [tubeLinesData, setTubeLinesData] = useState<ApiProps[]>()
   const [isLoading, setIsLoading] = useState(true)
 
   //* Initial Render / fetching the data
@@ -65,7 +65,7 @@ function Tubelines() {
     async function getTubeData() {
       try {
         const { data } = await axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status')
-        setTube(data)
+        setTubeLinesData(data)
         console.log(data)
         setIsLoading(false)
       } catch (error) {
@@ -82,7 +82,7 @@ function Tubelines() {
     <div className="lines">
       <h1>Tube Lines</h1>
       <div className="tube-line-container" >
-        {tube && tube.map((lineInfo, index) => (
+        {tubeLinesData && tubeLinesData.map((lineInfo, index) => (
           <TubeLineStatus key={index} lineInfo={lineInfo} />
         ))}
         {isLoading && <CircularProgress />}

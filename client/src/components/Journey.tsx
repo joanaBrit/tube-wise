@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react"
 import { isLoggedIn } from "../utils/Auth"
 import { Navigate } from "react-router-dom"
 import axios from "axios"
+import Tubelines, { ApiProps, TubeLineStatus } from "./TubeLines"
 
 // MUI
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material"
-// import Select, { SelectChangeEvent } from "@mui/material/Select"
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import { BluetoothAudioSharp } from "@mui/icons-material"
 import { NAPTAN_IDS } from "../constants"
 
@@ -31,19 +31,21 @@ interface Option {
   commonName: string;
 }
 
+
+
 function Journey() {
 
-  const [journey, setJourney] = useState<Array<Record<string, any>>>()
-  const [from, setFrom] = useState()
-  const [to, setTo] = useState()
-  
+  const [journeyLines, setJourneyLines] = useState<Array<ApiProps>>([])
+  const [from, setFrom] = useState<string>()
+  const [to, setTo] = useState<string>()
+
 
   useEffect(() => {
     async function getJourneyData() {
       try {
         if (from && to) {
           const { data } = await axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${from}/to/${to}`)
-          setJourney(data.lines)
+          setJourneyLines(data.lines)
           console.log(data.lines)
         }
       } catch (error) {
@@ -58,30 +60,26 @@ function Journey() {
 
   return (
     <>
-      <FromDropdown />
-      <ToDropdown />
+      <FromDropdown value={from} setValue={setFrom} />
+      <ToDropdown value={to} setValue={setTo} />
       {/* logic for journey data */}
       <div className="journey">
         <h1>Plan your journey</h1>
         <div className="journey-lines-container">
-          {journey && journey.map((line) => 
-            <Journey />
+          {journeyLines && journeyLines.map((line) =>
+            <TubeLineStatus lineInfo={line} />
           )}
+          <div>
+            <button>Plan</button>
+          </div>
         </div>
       </div>
     </>
   )
 }
 
-function FromDropdown() {
+function FromDropdown(props: { value: string, setValue: (v: string) => void }) {
   const options: Option[] = NAPTAN_IDS
-  const [fromStation, setFromStation] = useState()
-
-  const handleFromChange = (event) => { //(event: SelectChangeEvent)
-    setFromStation(event.target.value)
-  }
-
-
 
   return (
     <FormControl>
@@ -89,9 +87,9 @@ function FromDropdown() {
       <Select
         labelId="from-label"
         id="from-select"
-        value={fromStation}
+        value={props.value}
         label="From"
-        onChange={handleFromChange}
+        onChange={(e: SelectChangeEvent) => props.setValue(e.target.value)}
       >
         {/* logic for the tube lines */}
         {options.map(option => (
@@ -104,15 +102,8 @@ function FromDropdown() {
   )
 }
 
-function ToDropdown() {
+function ToDropdown(props: { value: string, setValue: (v: string) => void }) {
   const options = NAPTAN_IDS
-  const [toStation, setToStation] = useState()
-
-  const handleToChange = (event) => {
-    setToStation(event.target.value)
-  }
-
-
 
   return (
     <FormControl>
@@ -120,9 +111,9 @@ function ToDropdown() {
       <Select
         labelId="to-label"
         id="to-select"
-        value={toStation}
+        value={props.value}
         label="To"
-        onChange={handleToChange}
+        onChange={(e: SelectChangeEvent) => props.setValue(e.target.value)}
       >
         {/* logic for the tube lines */}
         {options.map(option => (
