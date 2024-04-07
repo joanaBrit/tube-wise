@@ -158,6 +158,8 @@ export type LoginResponse = {
 - Inserted a zoom in, zoom out and a clear button.
 - inserted logic to disable the buttons when they're not needed.
 
+5. Working with the API data
+
 - Fetched the tube lines data and styled
 
 - Implemented a footer with help information, social media and styled
@@ -174,57 +176,45 @@ export type LoginResponse = {
 - MUI dropdown basic select see the documentation and try to implement.
 - set the inial render for from and to.
 
+- Utilized the Tubelines ApiProps for my journey page, to extract the linestatuses.
+- Refactored the dropdown component functions to enhance maintainability and ease of development. Introduced props as arguments, allowing easier manipulation of dropdown values.
 
-To do:
+- For the screenshot problems:
+I was using the display name of the tube station instead of the naptanID.
+Because the display it was a string they were giving a lot of choices, and that was not what I needed.
+So instead of having on the dropfunctions:
+```Typescript
+<MenuItem key={option.naptanID} value={option.commonName}>
+  {option.commonName}
+</MenuItem>
 
-Home Page:
-- add the descreption.... about tube wise ✅
-- Missing something
-- style
+```
+it was changed to:
+```Typescript
+<MenuItem key={option.naptanID} value={option.naptanID}>
+  {option.commonName}
+</MenuItem>
 
-Register and Login Page:
-- Missing something on the left side (image or text)
-
-Footer:
-Make a footer with tube web page in case ✅
-- Get help: tube page ✅
-- 2024 Tube Wise ✅
-- support : email ✅
-- Git hub / Social media ✅
-- Style
-
-Map Page
-- Have the map image from Tube ✅
-- Style it
-
-Check your journey:
-- Fetch Tube API for the user to be able to choose the route
-- jsonprettify.com - post any json and track how it isd
-- Find the ids for each tube station - naptanId (see the list)
-- Fetch API to for the Info about the line (Good, Delays....)
-- Style:
-- From: To:
-- Date
-- A selecter to select the tube lines
-- Lift disruptions for people accessibility.
-- Info about if it's crowding
-- Info about AccidentStats
-
-
-Tube lines
-- Fetch the API to show the tube lines ✅
-- Line status ✅
-- Info about the Station Data if it's close desruptions ✅
-- Add a Spinner ✅
-- Styling
+```
+- Inserted a button to trigger the plan the journey action when is clicked after choosing the from and to.
+- handle the button and refactored to be more readable.
+Also I could just do this 
+```Typescript
+<Button onClick={getJourneyData()}>Plan</Button>
+```
+but decided to keep:
+```Typescript
+ const handlePlanJourney = () => {
+    console.log('Plan Journey', from, 'to', to)
+    getJourneyData()
+  }
+...
+<Button onClick={handlePlanJourney}>Plan</Button>
+```
+- filterd the data just to have the tune lines stations options.
 
 
-5. Token Storage:
-- 
-6. Protected Routes:
-- 
-7. User Logout:
-- 
+
 
 ## Final Product
 
