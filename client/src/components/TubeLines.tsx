@@ -14,6 +14,7 @@ export interface ApiProps {
   name: string
   lineStatuses: Array<{ statusSeverityDescription: string, reason: string }>
   modified: string
+  modeName: string
 }
 
 

@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { isLoggedIn } from "../utils/Auth"
 import { Navigate } from "react-router-dom"
 import axios from "axios"
-import Tubelines, { ApiProps, TubeLineStatus } from "./TubeLines"
+import { ApiProps, TubeLineStatus } from "./TubeLines"
 
 // MUI
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
-import { BluetoothAudioSharp } from "@mui/icons-material"
+import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material"
 import { NAPTAN_IDS } from "../constants"
 
 /**
@@ -39,24 +38,28 @@ function Journey() {
   const [from, setFrom] = useState<string>()
   const [to, setTo] = useState<string>()
 
-
-  useEffect(() => {
-    async function getJourneyData() {
-      try {
-        if (from && to) {
-          const { data } = await axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${from}/to/${to}`)
-          setJourneyLines(data.lines)
-          console.log(data.lines)
-        }
-      } catch (error) {
-        console.error('Something Went Wrong Please Try Again', error)
+  async function getJourneyData() {
+    try {
+      if (from && to) {
+        const { data } = await axios.get(`https://api.tfl.gov.uk/Journey/JourneyResults/${from}/to/${to}`)
+        setJourneyLines(data.lines)
+        console.log(data.lines)
       }
+    } catch (error) {
+      console.error('Something Went Wrong Please Try Again', error)
     }
-    getJourneyData()
-  }, [])
+  }
 
+  const handlePlanJourney = () => {
+    console.log('Plan Journey', from, 'to', to)
+    getJourneyData()
+  }
 
   if (!isLoggedIn()) return <Navigate to='/login' />
+
+  const lineStatusesToDisplay = journeyLines && journeyLines
+    .filter(line => line.modeName != 'bus')
+    .map((line) => <TubeLineStatus key={line.name} lineInfo={line} />)
 
   return (
     <>
@@ -66,17 +69,16 @@ function Journey() {
       <div className="journey">
         <h1>Plan your journey</h1>
         <div className="journey-lines-container">
-          {journeyLines && journeyLines.map((line) =>
-            <TubeLineStatus lineInfo={line} />
-          )}
+          {lineStatusesToDisplay}
           <div>
-            <button>Plan</button>
+            <Button onClick={handlePlanJourney}>Plan</Button>
           </div>
         </div>
       </div>
     </>
   )
 }
+
 
 function FromDropdown(props: { value: string, setValue: (v: string) => void }) {
   const options: Option[] = NAPTAN_IDS
@@ -93,7 +95,7 @@ function FromDropdown(props: { value: string, setValue: (v: string) => void }) {
       >
         {/* logic for the tube lines */}
         {options.map(option => (
-          <MenuItem key={option.naptanID} value={option.commonName}>
+          <MenuItem key={option.naptanID} value={option.naptanID}>
             {option.commonName}
           </MenuItem>
         ))}
@@ -117,7 +119,7 @@ function ToDropdown(props: { value: string, setValue: (v: string) => void }) {
       >
         {/* logic for the tube lines */}
         {options.map(option => (
-          <MenuItem key={option.naptanID} value={option.commonName}>
+          <MenuItem key={option.naptanID} value={option.naptanID}>
             {option.commonName}
           </MenuItem>
         ))}
