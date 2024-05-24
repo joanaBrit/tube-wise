@@ -21,16 +21,15 @@ function Footer() {
           backgroundColor: 'rgb(4 28 52)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-around',
+          justifyContent: 'flex-end',
         }}
 
       >
         <Typography
           sx={{
-            flexGrow: 1,
             letterSpacing: '.1rem',
             color: '#fff',
-            marginLeft: '4rem'
+            margin: '0 4rem'
           }}
         >
           <h3>Need help?</h3>

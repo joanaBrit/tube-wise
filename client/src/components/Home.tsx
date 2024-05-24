@@ -10,7 +10,7 @@ const Home = () => {
         width: '63vw',
         padding: '2rem',
         textAlign: 'center',
-        margin: 'auto',
+        margin: '30vh auto',
         flexDirection: 'column',
         justifyContent: 'center',
         backgroundColor: 'rgb(255 255 255 / 90%)'
