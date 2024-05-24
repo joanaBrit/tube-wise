@@ -21,7 +21,8 @@ function Footer() {
           backgroundColor: 'rgb(4 28 52)',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'flex-end',
+          justifyContent: 'center',
+          '@media (min-width: 600px)': {gap: '10rem'}
         }}
 
       >
