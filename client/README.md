@@ -211,7 +211,16 @@ but decided to keep:
 ...
 <Button onClick={handlePlanJourney}>Plan</Button>
 ```
-- filterd the data just to have the tune lines stations options.
+- filterd the data just to have the tube lines stations options.
+
+
+Things to do: 
+- home maybe add a carrosel with the lines, it looks to empty
+- login and register find an image to put in the right side
+- tube lines centred everything / LINES HAVE THE SAME size
+- Map center title / change the zoom buttons / give some radius to the square points
+- journey missing all the styling
+- see everything for mobile view
 
 
 
