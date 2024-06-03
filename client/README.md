@@ -222,8 +222,14 @@ Things to do:
 - journey missing all the styling
 - see everything for mobile view
 
-
-
+Things to fix:
+- whole footer width - wanted to have some margin: 0 1rem
+- Form in register it's overlaped - I though could work with Overflow
+- Map - the size looks weird on the phone
+- Plan journey 
+1. need to clear last search plan, is adding now.
+2. Change background of the dropdown
+3. Change color of text
 
 ## Final Product
 
