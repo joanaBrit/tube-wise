@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material"
+import Paper from '@mui/material/Paper'
 
 
 
@@ -10,13 +10,14 @@ const Home = () => {
         width: '63vw',
         padding: '2rem',
         textAlign: 'center',
-        margin: '30vh auto',
+        margin: '20vh auto',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: 'rgb(255 255 255 / 90%)'
+        backgroundColor: 'rgb(255 255 255 / 90%)',
+        // '@media (min-width: 600px)': {gap: '10rem'}
       }}
     >
-      <div className="app-info" style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="app-info" style={{ display: 'flex', flexDirection: 'column'}}>
         <h2>Make wise decisions when planning your journey.</h2>
         <h4>Optimize your commute with Tube Wise,
           ensuring a smoother and more efficient travel experience.</h4>

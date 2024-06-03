@@ -22,7 +22,7 @@ function Footer() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          '@media (min-width: 600px)': {gap: '10rem'}
+          '@media (min-width: 600px)': {gap: '8rem'}
         }}
 
       >
@@ -30,13 +30,16 @@ function Footer() {
           sx={{
             letterSpacing: '.1rem',
             color: '#fff',
-            margin: '0 4rem'
+            margin: '0 2rem',
+            width: '50%'
           }}
         >
+          <div className='help-container'>
           <h3>Need help?</h3>
           <div className='help-elements'>
             <a href='mailto:joanabrito216@gmail.com'>Email Me</a>
             <a href='https://tfl.gov.uk/'>TFL Support</a>
+          </div>
           </div>
         </Typography>
         <div className='icon-container'>

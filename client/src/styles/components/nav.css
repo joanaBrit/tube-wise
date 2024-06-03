@@ -10,7 +10,7 @@
 }
 
 .MuiToolbar-root {
-  gap: 2rem;
+  gap: 1.3rem;
 }
 
 a.menu-links {
@@ -36,6 +36,12 @@ a.menu-links:hover {
   font-size: 0.90em;
 }
 
+.help-container {
+  display: flex;
+  align-items: center;
+  /* gap: 2rem; */
+}
+
 .help-elements a {
   text-decoration: none;
   padding-bottom: 0.5rem;
@@ -43,7 +49,7 @@ a.menu-links:hover {
 
 .navigation-btn {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 1rem;
   width: fit-content;
 }
@@ -57,9 +63,11 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 3rem;
+  /* margin: 0 3rem; */
 }
 
-
-
-
+@media (min-width: 600px) {
+  .help-container{
+    gap: 2rem;
+  }
+}
