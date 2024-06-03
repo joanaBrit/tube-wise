@@ -16,7 +16,7 @@ function Footer() {
         sx={{
           width: '100%',
           height: 150,
-          position: 'absolute',
+          position: 'fixed',
           bottom: 0,
           backgroundColor: 'rgb(4 28 52)',
           display: 'flex',

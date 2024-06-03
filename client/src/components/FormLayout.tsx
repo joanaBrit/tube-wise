@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Login from './Login'
 import Register from './Register'
-import { Tab, Tabs } from '@mui/material'
+import { Tab, Tabs, autocompleteClasses } from '@mui/material'
 
 //* MUI
 import Paper from '@mui/material/Paper'
@@ -27,12 +27,11 @@ function RegisterAndLogin(props: { isRegisterTab: boolean }) {
       width: '20rem',
       padding: '1rem',
       textAlign: 'center',
-      marginTop: '5rem',
-      marginLeft: 'auto',
-      marginRight: '1.5rem',
+      margin: '4rem auto',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
+      // paddingBottom: '50rem',
       backgroundColor: 'rgb(255 255 255 / 90%)'
     }}>
       <Tabs
