@@ -18,6 +18,28 @@
   background: #fff;
 }
 
+.dropdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+  /* padding: 2rem; */
+}
+
+.journey-lines-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: aliceblue;
+  margin-top: 2rem;
+  border-radius: 5px;
+}
+
+.journey {
+  padding: 2rem;
+  margin-top: 5vh;
+}
+
 /* .lines h1 {
   justify-content: center;
   display: flex;

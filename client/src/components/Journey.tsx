@@ -63,11 +63,15 @@ function Journey() {
 
   return (
     <>
-      <FromDropdown value={from} setValue={setFrom} />
-      <ToDropdown value={to} setValue={setTo} />
-      {/* logic for journey data */}
+      <h1>Plan your journey</h1>
       <div className="journey">
-        <h1>Plan your journey</h1>
+        <div className="dropdown-container">
+          <FromDropdown value={from} setValue={setFrom} />
+          <ToDropdown value={to} setValue={setTo} />
+        </div>
+        {/* logic for journey data */}
+
+
         <div className="journey-lines-container">
           {lineStatusesToDisplay}
           <div>
