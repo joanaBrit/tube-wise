@@ -27,11 +27,9 @@ const Map = () => {
 
   return (
     <>
-      <div className="map-title">
         <h1>Map</h1>
-        <h3>Tube Lines</h3>
-      </div>
-      <TransformWrapper >
+      <TransformWrapper>
+        <div style={{backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2rem 0', marginTop: '4rem'}}>
         <Controls />
         <TransformComponent >
           <div style={{display: 'flex', justifyContent: 'center', marginTop: '0.2rem'}}>
@@ -42,6 +40,7 @@ const Map = () => {
           />
           </div>
         </TransformComponent>
+        </div>
       </TransformWrapper>
     </>
   )

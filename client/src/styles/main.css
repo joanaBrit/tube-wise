@@ -4,3 +4,9 @@
   background-image: url('../../public/assets/mapIllustration.jpg');
   background-size: cover;
   }
+
+  h1 {
+    justify-content: center;
+    display: flex;
+    margin: 2rem auto;
+  }
