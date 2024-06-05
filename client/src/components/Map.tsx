@@ -27,19 +27,19 @@ const Map = () => {
 
   return (
     <>
-        <h1>Map</h1>
+      <h1>Map</h1>
       <TransformWrapper>
-        <div style={{backgroundColor: 'rgba(255, 255, 255, 0.9)', padding: '2rem 0', marginTop: '4rem'}}>
-        <Controls />
-        <TransformComponent >
-          <div style={{display: 'flex', justifyContent: 'center', marginTop: '0.2rem'}}>
-          <img
-            src='/assets/tubeMap2024.png'
-            alt='Tube lines map'
-            width='90%'
-          />
-          </div>
-        </TransformComponent>
+        <div className="map-content-box">
+          <Controls />
+          <TransformComponent >
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '0.2rem' }}>
+              <img
+                src='/assets/tubeMap2024.png'
+                alt='Tube lines map'
+                width='90%'
+              />
+            </div>
+          </TransformComponent>
         </div>
       </TransformWrapper>
     </>
