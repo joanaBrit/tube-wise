@@ -19,9 +19,19 @@ header {
   justify-content: center;
 }
 
-div.content-box{
+div.content-box {
   height: var(--content-box-height);
   overflow: auto;
   padding: 1rem;
   box-sizing: border-box;
+}
+
+.footer h3 {
+  display: none
+}
+
+@media (min-width: 600px) {
+  .footer h3 {
+    display: block
+  }
 }

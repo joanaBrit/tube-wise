@@ -12,6 +12,7 @@ function Footer() {
   return (
     <>
       <Paper
+        className='footer'
         elevation={0}
         sx={{
           width: '100%',
@@ -22,7 +23,7 @@ function Footer() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          '@media (min-width: 600px)': {gap: '8rem'}
+          '@media (min-width: 600px)': { gap: '8rem' }
         }}
 
       >
@@ -35,11 +36,11 @@ function Footer() {
           }}
         >
           <div className='help-container'>
-          <h3>Need help?</h3>
-          <div className='help-elements'>
-            <a href='mailto:joanabrito216@gmail.com'>Email Me</a>
-            <a href='https://tfl.gov.uk/'>TFL Support</a>
-          </div>
+            <h3>Need help?</h3>
+            <div className='help-elements'>
+              <a href='mailto:joanabrito216@gmail.com'>Email Me</a>
+              <a href='https://tfl.gov.uk/'>TFL Support</a>
+            </div>
           </div>
         </Typography>
         <div className='icon-container'>
@@ -54,7 +55,7 @@ function Footer() {
               <LanguageIcon />
             </a>
           </div>
-          <p>© 2024 Tube Wise</p>
+          <p style={{ textAlign: 'center' }}>© 2024 Tube Wise</p>
         </div>
       </Paper >
     </>
