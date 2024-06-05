@@ -12,6 +12,9 @@ h1 {
   justify-content: center;
   display: flex;
   margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  background: #ffffffaa;
+  border-radius: 0.5rem;
 }
 
 header {
