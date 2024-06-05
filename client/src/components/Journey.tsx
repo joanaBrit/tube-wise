@@ -65,19 +65,19 @@ function Journey() {
     <>
       <h1>Plan your journey</h1>
       <div className="journey">
-        <div className="dropdown-container">
-          <FromDropdown value={from} setValue={setFrom} />
-          <ToDropdown value={to} setValue={setTo} />
-        </div>
+
+        <FromDropdown value={from} setValue={setFrom} />
+        <ToDropdown value={to} setValue={setTo} />
+
         {/* logic for journey data */}
 
+        <Button variant="contained" onClick={handlePlanJourney} style={{ width: '40%', margin: '0 auto' }}>Plan</Button>
 
-        <div className="journey-lines-container">
-          {lineStatusesToDisplay}
-          <div>
-            <Button onClick={handlePlanJourney}>Plan</Button>
+        {lineStatusesToDisplay?.length > 0 &&
+          <div className="journey-lines-container">
+            {lineStatusesToDisplay}
           </div>
-        </div>
+        }
       </div>
     </>
   )
