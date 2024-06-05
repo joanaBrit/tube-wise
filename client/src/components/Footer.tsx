@@ -15,7 +15,7 @@ function Footer() {
         elevation={0}
         sx={{
           width: '100%',
-          height: 150,
+          height: 'var(--footer-height)',
           position: 'fixed',
           bottom: 0,
           backgroundColor: 'rgb(4 28 52)',

@@ -10,6 +10,7 @@
   background: #fff;
   border-radius: 0.5rem;
   transition: all 0.2s;
+  width: 100%;
 }
 
 .tube-line-container button:hover {
@@ -39,8 +40,3 @@
   padding: 2rem;
   margin-top: 5vh;
 }
-
-/* .lines h1 {
-  justify-content: center;
-  display: flex;
-} */

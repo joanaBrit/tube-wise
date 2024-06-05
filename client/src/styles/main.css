@@ -1,12 +1,27 @@
-#root{
+#root {
   background-color: aliceblue;
   height: 100vh;
   background-image: url('../../public/assets/mapIllustration.jpg');
   background-size: cover;
-  }
+  --header-height: min(max(5vh, 60px), 80px);
+  --footer-height: 150px;
+  --content-box-height: calc(100vh - var(--footer-height) - var(--header-height))
+}
 
-  h1 {
-    justify-content: center;
-    display: flex;
-    margin: 2rem auto;
-  }
+h1 {
+  justify-content: center;
+  display: flex;
+  margin: 2rem auto;
+}
+
+header {
+  height: var(--header-height);
+  justify-content: center;
+}
+
+div.content-box{
+  height: var(--content-box-height);
+  overflow: auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
