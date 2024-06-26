@@ -4,7 +4,7 @@
   margin-right: 2.5rem;
 }
 
-.nav-links>a {
+.nav-links > a {
   color: white;
   text-decoration: none;
 }
@@ -27,13 +27,12 @@ a.menu-links:hover {
   cursor: auto;
 }
 
-
 /* Footer */
 .help-elements {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
-  font-size: 0.90em;
+  font-size: 0.9em;
 }
 
 .help-container {
@@ -67,7 +66,7 @@ p {
 }
 
 @media (min-width: 600px) {
-  .help-container{
+  .help-container {
     gap: 2rem;
   }
 }

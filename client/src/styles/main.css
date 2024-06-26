@@ -1,11 +1,13 @@
 #root {
   background-color: aliceblue;
   height: 100vh;
-  background-image: url('../../public/assets/mapIllustration.jpg');
+  background-image: url("../../public/assets/mapIllustration.jpg");
   background-size: cover;
   --header-height: min(max(5vh, 60px), 80px);
   --footer-height: 150px;
-  --content-box-height: calc(100vh - var(--footer-height) - var(--header-height))
+  --content-box-height: calc(
+    100vh - var(--footer-height) - var(--header-height)
+  );
 }
 
 h1 {
@@ -30,11 +32,11 @@ div.content-box {
 }
 
 .footer h3 {
-  display: none
+  display: none;
 }
 
 @media (min-width: 600px) {
   .footer h3 {
-    display: block
+    display: block;
   }
 }
