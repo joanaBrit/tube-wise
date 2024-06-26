@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { isLoggedIn } from "../utils/Auth";
+import { useState } from "react";
+import { isLoggedIn } from "../utils/auth";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-import { ApiProps, TubeLineStatus } from "./TubeLines";
+import { TflApiResponse, TubeLineStatus } from "./TubeLines";
 
-// MUI
 import {
   Button,
   FormControl,
@@ -15,30 +14,13 @@ import {
 } from "@mui/material";
 import { NAPTAN_IDS } from "../constants";
 
-/**
- * Add Journey component to App
- * Have the options for a dropdown menu to select valid tube stations
- * Get the NATPAN ID for a selected dropdown option
- * Allow user to submit journey when two options are selected
- * Construct the TfL API URL to get the journey
- * Parse the response from API to see what tube lines are involved
- * Show if there are any tube lines with disruptions / statuses
- *
- * UI: Want one form / card, with the section titled "Plan the journey",
- * with two dropdown input controls, with labels "from" and "to",
- * and a submit button labeled "Submit". After result
- * is fetched from API, then display below the form all the tube lines
- * involved in the journey, and their corresponding status, reusing components
- * already built for the Tube Line page.
- */
-
 interface Option {
   naptanID: string;
   commonName: string;
 }
 
 function Journey() {
-  const [journeyLines, setJourneyLines] = useState<Array<ApiProps>>([]);
+  const [journeyLines, setJourneyLines] = useState<Array<TflApiResponse>>([]);
   const [from, setFrom] = useState<string>();
   const [to, setTo] = useState<string>();
 
@@ -49,38 +31,30 @@ function Journey() {
           `https://api.tfl.gov.uk/Journey/JourneyResults/${from}/to/${to}`,
         );
         setJourneyLines(data.lines);
-        console.log(data.lines);
       }
     } catch (error) {
       console.error("Something Went Wrong Please Try Again", error);
     }
   }
 
-  const handlePlanJourney = () => {
-    console.log("Plan Journey", from, "to", to);
-    getJourneyData();
-  };
-
   if (!isLoggedIn()) return <Navigate to="/login" />;
 
   const lineStatusesToDisplay =
     journeyLines &&
     journeyLines
-      .filter((line) => line.modeName != "bus")
+      .filter((line) => line.modeName !== "bus")
       .map((line) => <TubeLineStatus key={line.name} lineInfo={line} />);
 
   return (
     <>
       <h1>Plan your journey</h1>
       <div className="journey">
-        <FromDropdown value={from} setValue={setFrom} />
-        <ToDropdown value={to} setValue={setTo} />
-
-        {/* logic for journey data */}
+        <FromAndToDropdown type="from" value={from} setValue={setFrom} />
+        <FromAndToDropdown type="to" value={to} setValue={setTo} />
 
         <Button
           variant="contained"
-          onClick={handlePlanJourney}
+          onClick={getJourneyData}
           style={{ width: "40%", margin: "0 auto" }}
         >
           Plan
@@ -94,44 +68,23 @@ function Journey() {
   );
 }
 
-function FromDropdown(props: { value: string; setValue: (v: string) => void }) {
+function FromAndToDropdown(props: {
+  type: "from" | "to";
+  value: string;
+  setValue: (v: string) => void;
+}) {
   const options: Option[] = NAPTAN_IDS;
 
   return (
     <FormControl>
-      <InputLabel id="from-label">From</InputLabel>
+      <InputLabel id={`${props.type}-label`}>From</InputLabel>
       <Select
-        labelId="from-label"
-        id="from-select"
+        labelId={`${props.type}-label`}
+        id={`${props.type}-select`}
         value={props.value}
-        label="From"
+        label={props.type[0].toUpperCase() + props.type.slice(1)}
         onChange={(e: SelectChangeEvent) => props.setValue(e.target.value)}
       >
-        {/* logic for the tube lines */}
-        {options.map((option) => (
-          <MenuItem key={option.naptanID} value={option.naptanID}>
-            {option.commonName}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  );
-}
-
-function ToDropdown(props: { value: string; setValue: (v: string) => void }) {
-  const options = NAPTAN_IDS;
-
-  return (
-    <FormControl>
-      <InputLabel id="to-label">To</InputLabel>
-      <Select
-        labelId="to-label"
-        id="to-select"
-        value={props.value}
-        label="To"
-        onChange={(e: SelectChangeEvent) => props.setValue(e.target.value)}
-      >
-        {/* logic for the tube lines */}
         {options.map((option) => (
           <MenuItem key={option.naptanID} value={option.naptanID}>
             {option.commonName}

@@ -1,6 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import axios from "axios";
 
 // Page components
 import Home from "./components/Home";
@@ -11,22 +9,9 @@ import RegisterAndLogin from "./components/FormLayout";
 import Map from "./components/Map";
 import Journey from "./components/Journey";
 
-// Styles
 import "./styles/global.css";
 
 function App() {
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        await axios.get("/");
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
-  }, []);
-
-
   return (
     <>
       <Nav />

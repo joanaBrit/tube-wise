@@ -38,7 +38,10 @@ a.menu-links:hover {
 .help-container {
   display: flex;
   align-items: center;
-  /* gap: 2rem; */
+  letter-spacing: 0.1rem;
+  color: #fff;
+  margin: 0 2rem;
+  width: 50%;
 }
 
 .help-elements a {
@@ -46,7 +49,7 @@ a.menu-links:hover {
   padding-bottom: 0.5rem;
 }
 
-.navigation-btn {
+.navigation-btn-container {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
@@ -62,7 +65,9 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: 0 3rem; */
+}
+.icon-container p {
+  text-align: center;
 }
 
 @media (min-width: 600px) {

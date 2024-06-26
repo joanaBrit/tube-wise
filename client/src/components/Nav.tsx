@@ -10,6 +10,7 @@ import {
   Menu,
   MenuItem,
   Container,
+  MenuProps,
 } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -23,23 +24,6 @@ const pages = [
 ];
 
 const Nav = () => {
-  // const [auth, setAuth] = React.useState(true)
-  // const [loginOpen, setLoginOpen] = useState(false)
-  // const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
-  // const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  // const navigate = useNavigate()
-
-  // const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorElNav(event.currentTarget)
-  // }
-
-  // const handleClose = (e) => {
-  //   setAnchorElNav(null)
-  //   setLoginOpen(false)
-  // }
-
-  // const id = loginOpen ? 'login-popover' : undefined
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -51,7 +35,7 @@ const Nav = () => {
           />
           <DesktopToolbarContents />
           <MobileToolbarContents />
-          <LogIcon />
+          <LoginButton />
         </Toolbar>
       </Container>
     </AppBar>
@@ -59,19 +43,20 @@ const Nav = () => {
 };
 
 function DesktopToolbarContents() {
+  const displayProp = { xs: "none", md: "flex" };
   return (
     <Box
       sx={{
         flexGrow: 1,
-        display: { xs: "none", md: "flex" },
+        display: displayProp,
         alignItems: "center",
       }}
     >
-      <AppTitle display={{ xs: "none", md: "flex" }} />
+      <AppTitle display={displayProp} />
       <div className="nav-links">
-        {pages.map((page) => (
-          <Link key={page.label} to={{ pathname: page.path }}>
-            {page.label}
+        {pages.map(({ label, path }) => (
+          <Link key={label} to={{ pathname: path }}>
+            {label}
           </Link>
         ))}
       </div>
@@ -84,6 +69,26 @@ function MobileToolbarContents() {
   const menuButton = useRef<HTMLButtonElement>(null);
 
   const displayProp = { xs: "flex", md: "none" };
+
+  const menuProps: MenuProps = {
+    id: "menu-appbar",
+    anchorEl: menuButton.current,
+    anchorOrigin: {
+      vertical: "bottom",
+      horizontal: "left",
+    },
+    keepMounted: true,
+    transformOrigin: {
+      vertical: "top",
+      horizontal: "left",
+    },
+    open: isOpen,
+    onClose: () => setIsOpen(false),
+    sx: {
+      display: { xs: "block", md: "none" },
+    },
+  };
+
   return (
     <>
       <Box sx={{ flexGrow: 1, display: displayProp, alignItems: "center" }}>
@@ -98,28 +103,11 @@ function MobileToolbarContents() {
         >
           <MenuIcon />
         </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={menuButton.current}
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "left",
-          }}
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
-          sx={{
-            display: { xs: "block", md: "none" },
-          }}
-        >
-          {pages.map((page) => (
-            <MenuItem key={page.label} onClick={() => setIsOpen(false)}>
-              <Link className="menu-links" to={{ pathname: page.path }}>
-                {page.label}
+        <Menu {...menuProps}>
+          {pages.map(({ label, path }) => (
+            <MenuItem key={label} onClick={() => setIsOpen(false)}>
+              <Link className="menu-links" to={{ pathname: path }}>
+                {label}
               </Link>
             </MenuItem>
           ))}
@@ -135,8 +123,6 @@ function AppTitle(props: { display }) {
     <Typography
       variant="h5"
       noWrap
-      // component="a"
-      // href="#app-bar-with-responsive-menu"
       sx={{
         mr: 2,
         display: props.display,
@@ -154,7 +140,7 @@ function AppTitle(props: { display }) {
   );
 }
 
-function LogIcon() {
+function LoginButton() {
   return (
     <Link to="/login">
       <IconButton

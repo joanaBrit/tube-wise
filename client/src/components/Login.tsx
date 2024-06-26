@@ -1,18 +1,9 @@
 import Form from "./Form";
 import axios from "axios";
 import { API_ROOT } from "../constants";
-import React, { FunctionComponent, useState } from "react";
-import { setToken } from "../utils/Auth";
+import { FunctionComponent } from "react";
+import { setToken } from "../utils/auth";
 import { LoginResponse } from "../../../common/types";
-
-// import FormLayout from './FormLayout'
-
-// interface LoginProps {
-//   onLogin: (
-//     username: string,
-//     password: string,
-//   ) => void
-// }
 
 const Login: FunctionComponent = () => {
   const fields = [
@@ -35,7 +26,7 @@ const Login: FunctionComponent = () => {
   return (
     <Form
       title="Login"
-      request={login}
+      onSubmit={login}
       fields={fields}
       redirect="/tube"
       processResponse={processResponse}
@@ -44,9 +35,8 @@ const Login: FunctionComponent = () => {
 
   function processResponse(data: LoginResponse) {
     if (data.token) {
-      const tokenName = "userID";
+      const tokenName = "userToken";
       setToken(tokenName, data.token);
-      localStorage.setItem("logged_user", JSON.stringify(true));
     }
   }
 };

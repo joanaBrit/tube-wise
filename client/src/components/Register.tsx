@@ -1,4 +1,3 @@
-import { RegisterUserResponse } from "../../../common/types";
 import { API_ROOT } from "../constants";
 import Form from "./Form";
 import axios from "axios";
@@ -34,18 +33,12 @@ const Register = () => {
   return (
     <Form
       title="Register"
-      request={register}
+      onSubmit={register}
       fields={fields}
       redirect="/login"
-      processResponse={processResponse}
+      processResponse={() => {}}
     />
   );
-
-  function processResponse(data: RegisterUserResponse) {
-    if (data.user) {
-      console.log("yay");
-    }
-  }
 };
 
 export default Register;

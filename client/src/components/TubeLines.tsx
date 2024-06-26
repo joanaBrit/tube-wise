@@ -1,28 +1,28 @@
 import { Navigate } from "react-router-dom";
-import { isLoggedIn } from "../utils/Auth";
+import { isLoggedIn } from "../utils/auth";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// MUI
 import { Button, Typography } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import { CircularProgress } from "@mui/material";
 
-export interface ApiProps {
+export interface TflApiResponse {
   name: string;
   lineStatuses: Array<{ statusSeverityDescription: string; reason: string }>;
   modified: string;
   modeName: string;
 }
 
-export function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
-  //* Popover
+export function TubeLineStatus({ lineInfo }: { lineInfo: TflApiResponse }) {
   const [popover, setPopover] = useState<HTMLButtonElement>(null);
   const open = Boolean(popover);
-  const id = open ? `popover- ${lineInfo.name}` : undefined;
+  const id = open ? `popover-${lineInfo.name}` : undefined;
+
+  const lineAbnormalReason = lineInfo.lineStatuses[0].reason;
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setPopover(event.currentTarget);
+    lineAbnormalReason && setPopover(event.currentTarget);
   };
 
   const handleClose = () => {
@@ -34,7 +34,9 @@ export function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
       <Button
         variant="text"
         aria-describedby={id}
-        onClick={lineInfo.lineStatuses[0].reason ? handleClick : null}
+        onClick={handleClick}
+        disabled={!lineAbnormalReason}
+        sx={{ color: "#1976d2 !important" }}
       >
         {lineInfo.name}: {lineInfo.lineStatuses[0].statusSeverityDescription}
       </Button>
@@ -49,7 +51,7 @@ export function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
         }}
       >
         <Typography sx={{ p: 2, color: "rgba(0, 0, 0, 0.87)" }}>
-          {lineInfo.lineStatuses[0].reason}
+          {lineAbnormalReason}
         </Typography>
       </Popover>
     </div>
@@ -57,11 +59,9 @@ export function TubeLineStatus({ lineInfo }: { lineInfo: ApiProps }) {
 }
 
 function Tubelines() {
-  //* State
-  const [tubeLinesData, setTubeLinesData] = useState<ApiProps[]>();
+  const [tubeLinesData, setTubeLinesData] = useState<TflApiResponse[]>();
   const [isLoading, setIsLoading] = useState(true);
 
-  //* Initial Render / fetching the data
   useEffect(() => {
     async function getTubeData() {
       try {
@@ -69,7 +69,6 @@ function Tubelines() {
           "https://api.tfl.gov.uk/Line/Mode/tube/Status",
         );
         setTubeLinesData(data);
-        console.log(data);
         setIsLoading(false);
       } catch (error) {
         console.error("Something Went Wrong Please Try Again", error);

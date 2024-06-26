@@ -1,9 +1,8 @@
 import { useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
-import { Tab, Tabs, autocompleteClasses } from "@mui/material";
 
-//* MUI
+import { Tab, Tabs } from "@mui/material";
 import Paper from "@mui/material/Paper";
 
 // Icons
@@ -32,7 +31,6 @@ function RegisterAndLogin(props: { isRegisterTab: boolean }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        // paddingBottom: '50rem',
         backgroundColor: "rgb(255 255 255 / 90%)",
       }}
     >

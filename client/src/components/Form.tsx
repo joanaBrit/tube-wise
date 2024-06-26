@@ -12,8 +12,8 @@ import { Button, TextField } from "@mui/material";
 interface FormProps {
   title: string;
   fields: Array<{ type: string; name: string; label: string }>;
-  request: (
-    data: any,
+  onSubmit: (
+    data,
   ) => Promise<{ data: ErrorResponse | LoginResponse | RegisterUserResponse }>;
   redirect: string;
   onLoad?: () => Promise<{ data: any }>;
@@ -21,15 +21,13 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
-  const { title, fields, request, redirect, onLoad, processResponse } = props;
+  const { title, fields, onSubmit, redirect, onLoad, processResponse } = props;
 
-  //* Variables
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [error, setError] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
-  //* On component render
   useEffect(() => {
     const fillFormField = async () => {
       if (!onLoad) return;
@@ -55,23 +53,19 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
     e.preventDefault();
 
     try {
-      const { data } = await request(formData);
+      const { data } = await onSubmit(formData);
       if ("error" in data) {
-        setError(data.error);
+        setError(String(data.error));
       } else {
         processResponse(data);
 
-        // Check if redirect
         if (redirect) {
           navigate(redirect);
         }
       }
-      // Set successful message
+
       setMessage("Form submitted successfuly!");
     } catch (error) {
-      // console.log('Full error object: ', error)
-      // console.log('Front-end error: ', error)
-      // console.log('Error response: ', error.response)
       const errorMessage = error.response?.data?.error || "Internal Error";
       console.log(errorMessage);
       setError(errorMessage);
@@ -93,7 +87,7 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
             />
           ))}
         </div>
-        {error && (
+        {error !== "" && (
           <div style={{ color: "red", marginTop: "1.5rem" }}>{error}</div>
         )}
         {message}
