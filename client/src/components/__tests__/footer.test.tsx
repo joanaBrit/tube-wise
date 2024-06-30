@@ -1,9 +1,11 @@
 import Footer from "../Footer";
-import { render, screen, cleanup } from "@testing-library/react";
-import '@testing-library/jest-dom'
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-test("Footer", () => {
+it("has a link to the specific path", () => {
   render(<Footer />);
-  const linkElement = screen.getByText(/Footer content/i);
-  expect(linkElement).toBeInTheDocument();
+  const link = screen.getByRole("link", { name: "TFL Support" });
+
+  expect(link).toBeInTheDocument();
+  expect(link.getAttribute("href")).toContain("tfl.gov.uk");
 });
