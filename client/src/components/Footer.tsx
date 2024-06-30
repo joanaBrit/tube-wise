@@ -1,5 +1,5 @@
 // MUI
-import { SxProps, Typography } from "@mui/material";
+import { SxProps } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
