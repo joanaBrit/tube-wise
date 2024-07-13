@@ -1,10 +1,12 @@
 import type {Config} from 'jest';
 
 const config: Config = {
+  preset: 'ts-jest',
   testEnvironment: "jsdom",
   roots: ["<rootDir>/src"],
   transform: {
-    '.+\\.(ts|tsx|js|jsx|mjs)$': "babel-jest"
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
   transformIgnorePatterns: [
     "/node_modules/(?!(@ag-grid-community|@ag-grid-enterprise)/)"
@@ -12,7 +14,7 @@ const config: Config = {
   moduleNameMapper: {
     "\\.(css|scss|less)$": "<rootDir>/__mocks__/styleMock.js"
   },
-  setupFiles: ["./jest.setup.js"]
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"]
 };
 
 export default config;
