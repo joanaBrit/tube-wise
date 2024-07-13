@@ -213,23 +213,16 @@ but decided to keep:
 ```
 - filterd the data just to have the tube lines stations options.
 
+- styling fixes - mobile view
 
-Things to do: 
-- home maybe add a carrosel with the lines, it looks to empty
-- login and register find an image to put in the right side
-- tube lines centred everything / LINES HAVE THE SAME size
-- Map center title / change the zoom buttons / give some radius to the square points
-- journey missing all the styling
-- see everything for mobile view
+- Added jest for testing
+- had some issues with jest.config and set up file (did some diferent instalation, tried differents ways to set up the config)
+-  needed to unistall some dependencies from create react app
+- instead of having webpackage installed vite, it make it faster to load
+- create the testing components for each component
 
-Things to fix:
-- whole footer width - wanted to have some margin: 0 1rem
-- Form in register it's overlaped - I though could work with Overflow
-- Map - the size looks weird on the phone
-- Plan journey 
-1. need to clear last search plan, is adding now.
-2. Change background of the dropdown
-3. Change color of text
+
+
 
 ## Final Product
 
