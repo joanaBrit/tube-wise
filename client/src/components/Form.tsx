@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 import {
   ErrorResponse,
   LoginResponse,
@@ -7,13 +7,14 @@ import {
 } from "../../../common/types";
 
 import { Button, TextField } from "@mui/material";
+import { useNavigate } from "../utils/router";
 
 // Interface
 interface FormProps {
   title: string;
   fields: Array<{ type: string; name: string; label: string }>;
   onSubmit: (
-    data,
+    data
   ) => Promise<{ data: ErrorResponse | LoginResponse | RegisterUserResponse }>;
   redirect: string;
   onLoad?: () => Promise<{ data: any }>;

@@ -1,5 +1,10 @@
 import Login from "../components/Login";
 import { render, screen } from "@testing-library/react";
+// import "@testing-library/jest-dom";
+
+jest.mock("../utils/router", () => ({
+  useNavigate: (v) => console.log("Routing to " + v),
+}));
 
 describe("Login", () => {
   render(<Login />);
