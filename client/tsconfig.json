@@ -21,6 +21,6 @@
     "types": ["node", "jest"]
   },
   "include": [
-    "src"
+    "src", "./jest.setup.ts"
   ]
 }
