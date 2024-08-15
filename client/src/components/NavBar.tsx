@@ -16,7 +16,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
-const pages = [
+export const pages = [
   { label: "Home", path: "/" },
   { label: "Map", path: "/map" },
   { label: "Journey", path: "/journey" },
