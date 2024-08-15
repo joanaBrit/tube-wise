@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 // Page components
 import Home from "./components/Home";
-import Nav from "./components/Nav";
+import Nav from "./components/NavBar";
 import Footer from "./components/Footer";
 import Tubelines from "./components/TubeLines";
 import RegisterAndLogin from "./components/FormLayout";
