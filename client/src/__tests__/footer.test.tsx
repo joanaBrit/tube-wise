@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
+// import "@testing-library/jest-dom";
 
 it("has a link to the specific path", () => {
   render(<Footer />);
