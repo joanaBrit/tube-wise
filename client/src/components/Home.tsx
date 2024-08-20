@@ -23,8 +23,8 @@ const Home = () => {
           backgroundColor: "rgb(255 255 255 / 90%)",
         }}
       >
-        <h2>Make wise decisions when planning your journey.</h2>
-        <h4>
+        <h2 data-testid="main-title">Make wise decisions when planning your journey.</h2>
+        <h4 data-testid="body-text">
           Optimize your commute with Tube Wise, ensuring a smoother and more
           efficient travel experience.
         </h4>
