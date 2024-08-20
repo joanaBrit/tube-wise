@@ -28,7 +28,7 @@ function Journey() {
     try {
       if (from && to) {
         const { data } = await axios.get(
-          `https://api.tfl.gov.uk/Journey/JourneyResults/${from}/to/${to}`,
+          `https://api.tfl.gov.uk/Journey/JourneyResults/${from}/to/${to}`
         );
         setJourneyLines(data.lines);
       }
@@ -73,23 +73,32 @@ function FromAndToDropdown(props: {
   value: string;
   setValue: (v: string) => void;
 }) {
-  const options: Option[] = NAPTAN_IDS;
+  const options: Option[] = NAPTAN_IDS.filter((v) => v.naptanID);
 
   return (
     <FormControl>
-      <InputLabel id={`${props.type}-label`}>From</InputLabel>
+      <InputLabel id={`${props.type}-label`}>
+        {props.type[0].toUpperCase() + props.type.slice(1)}
+      </InputLabel>
       <Select
         labelId={`${props.type}-label`}
         id={`${props.type}-select`}
-        value={props.value}
-        label={props.type[0].toUpperCase() + props.type.slice(1)}
+        /* 
+        Material UI will complain if selected state is `undefined` 
+        because this is not valid menu item value
+        But it will not complain if the selected state is "" and this is not a menu item value.
+        */
+        value={props.value ?? ""}
         onChange={(e: SelectChangeEvent) => props.setValue(e.target.value)}
       >
-        {options.map((option) => (
-          <MenuItem key={option.naptanID} value={option.naptanID}>
-            {option.commonName}
-          </MenuItem>
-        ))}
+        {options.map((option) => {
+          option.commonName == undefined && console.log(option);
+          return (
+            <MenuItem key={option.naptanID} value={option.naptanID}>
+              {option.commonName}
+            </MenuItem>
+          );
+        })}
       </Select>
     </FormControl>
   );
