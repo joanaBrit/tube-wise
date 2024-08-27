@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Journey from "../components/Journey";
 import axios from "axios";
+import { NAPTAN_IDS } from "../constants";
 
 jest.mock("axios");
 jest.mock("../utils/auth", () => {
@@ -57,7 +58,12 @@ describe("Journey", () => {
     expect(axios.get).toHaveBeenCalledTimes(1);
   });
 
-  it("displays all tube lines", () => {
-    //map through the lines
+  it("displays all tube station options", async () => {
+    const stations = NAPTAN_IDS.map(entry =>entry.commonName)
+    const dropdown =screen.getByRole("combobox", { name: "From" });
+    
+    await act(()=>userEvent.click(dropdown))
+    //map through all station names
+    stations.forEach(station => {expect(screen.getByText(station)).toBeInTheDocument()})
   });
 });
