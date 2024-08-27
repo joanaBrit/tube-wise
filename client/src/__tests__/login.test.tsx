@@ -1,11 +1,7 @@
 import axios from "axios";
 import Login from "../components/Login";
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-} from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 jest.mock("../utils/router", () => ({
   useNavigate: (v) => console.log("Routing to " + v),
@@ -26,14 +22,8 @@ describe("Login", () => {
   });
 
   it("does a POST when login button is clicked", async () => {
-    await act(async () =>
-      fireEvent(
-        screen.getByRole("button", { name: "Login" }),
-        new MouseEvent("click", {
-          bubbles: true,
-          cancelable: true,
-        })
-      )
+    await act(() =>
+      userEvent.click(screen.getByRole("button", { name: "Login" }))
     );
     expect(axios.post).toHaveBeenCalledTimes(1);
   });
