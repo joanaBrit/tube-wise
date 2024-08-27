@@ -54,10 +54,10 @@ function Controls() {
 
   return (
     <div className="zoom-buttons">
-      <button onClick={() => handleZoom(1)} disabled={zoomCount === maxZoom}>
+      <button onClick={() => handleZoom(1)} disabled={zoomCount === maxZoom} aria-label="zoom in">
         <ZoomInIcon />
       </button>
-      <button onClick={() => handleZoom(-1)} disabled={zoomCount === minZoom}>
+      <button onClick={() => handleZoom(-1)} disabled={zoomCount === minZoom} aria-label="zoom out">
         <ZoomOutIcon />
       </button>
       <button
@@ -65,6 +65,7 @@ function Controls() {
           resetTransform();
           setzoomCount(0);
         }}
+        aria-label="reset zoom"
       >
         <ClearIcon />
       </button>
