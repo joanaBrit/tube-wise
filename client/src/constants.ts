@@ -1,4 +1,4 @@
-export const API_ROOT = "http://localhost:4000";
+export const API_ROOT = process.env.API_ROOT;
 
 export const NAPTAN_IDS = [
   { naptanID: "940GZZLUBST", commonName: "Baker Street Underground Station" },
