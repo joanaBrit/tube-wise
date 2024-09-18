@@ -11,18 +11,18 @@ jest.mock("../utils/router", () => ({
 jest.mock("axios");
 
 describe("TubeLines", () => {
-  beforeEach(async () => {
-    const tubeData = { data: "tubeLinesData" };
-    (axios.get as jest.Mock).mockResolvedValue(tubeData);
-    await act(async () => {
+  // beforeEach(async () => {
+  //   const tubeData = { data: "tubeLinesData" };
+  //   (axios.get as jest.Mock).mockResolvedValue(tubeData);
+  //   await act(async () => {
       render(
           <TubeLines />
       );
-    });
-  });
+    // });
+  // });
 
   it("has a title", () => {
-    const title = screen.getByText("Tuble Lines");
+    const title = screen.getByText("Tube Lines");
     expect(title).toBeInTheDocument();
   });
 

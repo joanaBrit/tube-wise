@@ -1,5 +1,3 @@
-import { Navigate } from "react-router-dom";
-import { isLoggedIn } from "../utils/auth";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -78,7 +76,8 @@ function Tubelines() {
     getTubeData();
   }, []);
 
-  if (!isLoggedIn()) return <Navigate to="/login" />;
+// example of restriction
+  // if (!isLoggedIn()) return <Navigate to="/login" />;
 
   return (
     <div className="lines">

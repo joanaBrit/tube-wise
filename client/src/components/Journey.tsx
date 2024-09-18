@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { isLoggedIn } from "../utils/auth";
-import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { TflApiResponse, TubeLineStatus } from "./TubeLines";
 
@@ -37,7 +35,8 @@ function Journey() {
     }
   }
 
-  if (!isLoggedIn()) return <Navigate to="/login" />;
+  // example of restriction
+  // if (!isLoggedIn()) return <Navigate to="/login" />;
 
   const lineStatusesToDisplay =
     journeyLines &&
