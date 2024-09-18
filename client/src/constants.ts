@@ -1,4 +1,4 @@
-export const API_ROOT = process.env.API_ROOT;
+export const API_ROOT = import.meta.env.VITE_API_ROOT
 
 export const NAPTAN_IDS = [
   { naptanID: "940GZZLUBST", commonName: "Baker Street Underground Station" },
