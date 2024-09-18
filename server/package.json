@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./dist/bundle.cjs",
     "build": "webpack",
+    "dev":  "webpack && node ./dist/bundle.cjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
