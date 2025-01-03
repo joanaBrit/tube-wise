@@ -52,7 +52,7 @@
 #### Necessary Deliverables:
 
 * Working App hosted on the internet.
-* User friendly
+* User friendly.
 
 
 ## Planing
@@ -67,44 +67,73 @@ This is a project to showcase some skills and keep learning in this case for the
 
 ## Project Breakdown
 
-### Day 1 - Project Planning and Initialization:
+### Project Planning and Initialization:
 
-- create a repository in GitHub
-- Create the App install React and typescript
-- Set up the app creating a root and test it
+1. Design Planning
+
+Developed the app prototype on Figma to visualize the user interface, define features, and establish the design.
+
+2. Repository Setup <!-- Ask David if this part is ok!!!!!!!!!!!!!!!!!!! >
+
+Created a new repository on GitHub to manage version control.
+
+3. Application Initialization
+
+Initialized the project using React and TypeScript for a maintainable architecture.
 
 
-### Day 2-4 - Backend Development
+### Backend Development
 
-1. Set Up Project:
-- Initialized a new Node.js project `npm init -y`.
-- Since I am building with typescript it was required a webpack to bundle, added a loader and added some scripts to the package.json like start and build.
-- Installed necessary dependencies (express, mongoose, bcrypt, jsonwebtoken, etc.)
-- Tested with if the route was making a good connection and the insonia was able to get requests.
-2. Create Database Schema:
-- Connected the data with mongoDB.
-- Created an env file to secure my password. 
-- Created an user Schema, include fields for username, email, password. virtual field for the passwordconfirmation.
-- Created a custom method for a schema to disable all special characters for use in a password.
-3. User Registration:
-- Create an endpoint to handle user registration (`/register`).
-- Hash the user's password using `bcrypt` before storing it in the database.
-- Created the conection by the routes.
-4. User Login:
-- Create an endpoint to handle user registration (`/login`).
--Hash the user's password using `bcrypt` before storing in the database.
-- Handle user errors.
-5. Token Generation (JWT):
-- Upon successful login, generate a JSON Web Token (JWT) to be sent to the client.
-6. Authentication Middleware:
-- Created a middleware to verify the JWT sent in the headers of protected routes.
-- Ensured the token is valid before allowing access to protected resources.
-7. Protected Routes:
-- Created a secure route to authenticate if the user have is authenticate.
-Error handlers
-- Custom class
-- Middleware authentication to protectted routes.
-- Refactored and cleaned some lines of code.
+1. Project Setup
+
+Initialized a new Node.js project `npm init -y`.
+
+Configured TypeScript and Webpack for efficient bundling.
+
+Added essential dependencies: `express`, `mongoose`, `bcrypt`, `jsonwebtoken`, and more.
+
+Tested routes with Insomnia.
+
+2. Database Schema
+
+Integrated MongoDB for database management.
+
+Secured credentials with an `.env` file. 
+
+Designed a User Schema:
+
+  Fields: username, email, password and a virtual field for the passwordconfirmation.
+
+  Added a custom method for a schema to disable all special characters for use in a password.
+
+3. User Authentication
+
+Registration:
+
+  Endpoint `/register`.
+
+  Password hashing using `bcrypt`.
+
+Login:
+
+Endpoint `/login`.
+
+Error handling for invalid credentials.
+
+4. Token-Based Authentication
+
+Generated JWT tokens upon successful login.
+
+Implemented middleware to verify tokens and protect routes.
+
+5. Protected Routes
+
+Added secure endpoints accessible only to authenticated users. <!-- MAKE SURE that this exist or delete !>
+
+6. Error Handling
+
+Developed custom error classes and middleware for better debugging and maintainability.
+
 ### Day 5 - 12  Frontend Development
 1. Set Up Project:
 - Create a new React app, installed typescript and nessecery dependancies.
